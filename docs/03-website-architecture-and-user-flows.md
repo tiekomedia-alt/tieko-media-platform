@@ -1,7 +1,7 @@
 # Tieko Media Platform: Website Architecture and User Flows
 
 **Document ID:** TMP-03  
-**Version:** 0.1  
+**Version:** 0.2  
 **Status:** Working draft  
 **Date:** 16 September 2026  
 **Owner:** Tieko Media Limited  
@@ -38,7 +38,7 @@ The architecture must:
 
 1. Make Tieko Media’s positioning understandable within seconds.
 2. Allow visitors to enter through any important page without becoming disoriented.
-3. Keep the seven launch services easy to discover.
+3. Keep the eight launch services easy to discover.
 4. Prevent the navigation from becoming crowded.
 5. Connect services, insights, products, reports and case studies.
 6. Make Book a Call continuously available without becoming intrusive.
@@ -95,7 +95,7 @@ Book a Call must be visually distinct as the primary action.
 
 ### 4.2 Services menu
 
-The Services menu should expose the seven launch services without placing all seven items directly in the navigation bar.
+The Services menu should expose the eight launch services without placing all eight items directly in the navigation bar.
 
 Recommended menu structure:
 
@@ -114,6 +114,7 @@ Recommended menu structure:
 
 - Compliance
 - Intelligence Reports
+- Data and Records Management
 
 The final menu labels may be refined during content design, but every service must remain directly accessible within one interaction from the main Services control.
 
@@ -249,6 +250,7 @@ flowchart TD
     S --> S5["Intelligence Reports"]
     S --> S6["Billboard Advertising"]
     S --> S7["Press Release Services"]
+    S --> S8["Data and Records Management"]
 
     P --> P1["TeamShuffle"]
     I --> R["/reports/[slug]"]
@@ -271,6 +273,7 @@ flowchart TD
 | Intelligence Reports | /services/intelligence-reports | Paid research and report commissioning |
 | Billboard Advertising | /services/billboard-advertising | Outdoor campaign planning and coordination |
 | Press Release Services | /services/press-release-services | Press release preparation and distribution |
+| Data and Records Management | /services/data-records-management | Digitisation, governance, secure records lifecycle and authorised data discovery |
 | Products hub | /products | Approved owned products |
 | TeamShuffle | /products/teamshuffle | Product proof and live-product referral |
 | Digital Business Health Check | /tools/digital-business-health-check | Free scored self-assessment and qualified audit pathway |
@@ -354,7 +357,7 @@ Recommended homepage sequence:
 3. Primary Book a Call and secondary Explore Our Services CTA
 4. Short proof or credibility strip
 5. Four-capability model
-6. Seven launch services
+6. Eight launch services
 7. Selected case studies
 8. Product-building proof
 9. Intelligence-report feature
@@ -392,7 +395,7 @@ Recommended sequence:
 1. Services positioning
 2. Explain the four-capability model
 3. Problem-based service selector
-4. Seven service summaries
+4. Eight service summaries
 5. Related work
 6. Relevant insights
 7. Book a Call
@@ -406,6 +409,7 @@ The service selector should help users identify their route through practical qu
 - Do you need research before making a decision?
 - Do you need outdoor visibility?
 - Do you have an announcement that requires media distribution?
+- Do you need to digitise, organise, retain, retrieve or protect institutional records?
 
 ## 10. Standard service-page flow
 
@@ -665,7 +669,38 @@ The page must state that publication and editorial acceptance cannot be guarante
 - Billboard Advertising
 - Relevant PR work and insights
 
-## 18. Products flow
+## 18. Data and Records Management flow
+
+```mermaid
+flowchart TD
+    E["Search, referral or service hub"] --> D["Data and Records Management page"]
+    D --> N["Identify records and data need"]
+    N --> S["Define authorised scope and sensitivity"]
+    S --> A["Assess records, systems and workflows"]
+    A --> R["Recommend governance and delivery plan"]
+    R --> B["Book a Call"]
+```
+
+### Required decision information
+
+Users should understand:
+
+- The service covers the records lifecycle, including capture, classification, retention, retrieval, archival storage and lawful disposal.
+- Data discovery and analysis only use records and systems the client is authorised to provide or permit Tieko to access.
+- Third-party storage, scanning, hosting or destruction may be delivered by approved specialist partners under documented confidentiality and data-processing terms.
+- Data leakage risk can be reduced, but absolute prevention cannot be guaranteed.
+- Cybersecurity testing, legal advice and certification are separate scopes unless expressly included.
+- Sensitive records require enhanced access controls, transfer rules, retention decisions and incident procedures.
+
+### Primary cross-links
+
+- Compliance
+- Intelligence Reports
+- Digital Presence Optimisation
+- Relevant data-governance and digitisation insights
+- Book a Call
+
+## 19. Products flow
 
 ```mermaid
 flowchart TD
@@ -685,7 +720,7 @@ flowchart TD
 - Confidential and unapproved products must not appear.
 - Product pages must not become sales pages for unrelated services.
 
-## 19. Work and case-study flow
+## 20. Work and case-study flow
 
 ```mermaid
 flowchart TD
@@ -709,7 +744,7 @@ Each case study should link to:
 
 Each service page should link back to the most relevant approved case studies.
 
-## 20. Insights user flow
+## 21. Insights user flow
 
 ```mermaid
 flowchart TD
@@ -730,7 +765,7 @@ flowchart TD
 - Sources should be supplied where required.
 - Related content should be editorially relevant.
 
-## 21. Book a Call flow
+## 22. Book a Call flow
 
 ```mermaid
 flowchart TD
@@ -757,7 +792,7 @@ flowchart TD
 - Do not state or imply that booking creates a solicitor-client relationship.
 - Record approved analytics events without collecting sensitive content.
 
-## 22. General enquiry flow
+## 23. General enquiry flow
 
 ```mermaid
 flowchart TD
@@ -784,7 +819,7 @@ A successful confirmation must include:
 - No guaranteed outcome
 - No false claim that a human has reviewed the submission
 
-## 23. Paid-campaign landing-page flow
+## 24. Paid-campaign landing-page flow
 
 Individual service pages may support focused advertising variants.
 
@@ -810,7 +845,7 @@ flowchart TD
 - Campaign claims must be verifiable.
 - The experience must work without third-party tracking consent where possible.
 
-## 24. Digital Business Health Check flow
+## 25. Digital Business Health Check flow
 
 The Tieko Digital Business Health Check is an original lead-generation and educational tool. It must not reproduce another company’s wording, scoring model or assessment framework.
 
@@ -832,7 +867,7 @@ flowchart TD
     O -->|Learn more| C["Relevant services and insights"]
 ```
 
-### 24.1 Proposed assessment dimensions
+### 25.1 Proposed assessment dimensions
 
 The free assessment should evaluate eight dimensions:
 
@@ -847,7 +882,7 @@ The free assessment should evaluate eight dimensions:
 
 Each dimension must contain a small number of plain-language questions. Questions must assess observable practices rather than invite users to rate themselves vaguely.
 
-### 24.2 Scoring model
+### 25.2 Scoring model
 
 The free tool should produce:
 
@@ -869,7 +904,7 @@ Proposed bands:
 
 The final formula, question weights and band language must be validated before launch. A high score must not imply legal compliance, security certification or guaranteed business performance.
 
-### 24.3 Result experience
+### 25.3 Result experience
 
 The user must see the overall score immediately after completing the assessment.
 
@@ -897,7 +932,7 @@ Email delivery must:
 - Store only necessary data
 - Provide truthful follow-up expectations
 
-### 24.4 Paid audit pathway
+### 25.4 Paid audit pathway
 
 The paid Digital Presence and Infrastructure Audit may include:
 
@@ -917,7 +952,7 @@ The paid Digital Presence and Infrastructure Audit may include:
 
 The paid audit must distinguish verified findings from self-reported answers.
 
-### 24.5 Campaign use
+### 25.5 Campaign use
 
 The free assessment may be promoted through:
 
@@ -931,7 +966,7 @@ The free assessment may be promoted through:
 
 Campaign landing variants must preserve canonical and indexing rules.
 
-### 24.6 Tool security and privacy
+### 25.6 Tool security and privacy
 
 The tool must:
 
@@ -945,7 +980,7 @@ The tool must:
 - Avoid sending assessment answers into analytics platforms
 - Retain data only according to the approved policy
 
-### 24.7 Tool internal links
+### 25.7 Tool internal links
 
 The Health Check should receive links from:
 
@@ -965,14 +1000,14 @@ The result experience may link to:
 - Book a Call
 - Paid audit information
 
-## 25. Internal-linking system
+## 26. Internal-linking system
 
-### 24.1 Required link relationships
+### 25.1 Required link relationships
 
 | Source | Must link to |
 |---|---|
 | Homepage | Major hubs, selected services, products, work, intelligence and insights |
-| Services hub | All seven launch services |
+| Services hub | All eight launch services |
 | Service page | Related services, proof, insights, Book a Call |
 | Product hub | All approved public products |
 | Product page | Live product, related work, relevant capability |
@@ -985,7 +1020,7 @@ The result experience may link to:
 | About | Team, products, work and Book a Call |
 | Footer | Priority hubs, services and legal pages |
 
-### 24.2 Anchor-text principles
+### 25.2 Anchor-text principles
 
 Internal links must:
 
@@ -996,7 +1031,7 @@ Internal links must:
 - Avoid excessive exact-match repetition
 - Never link confidential or unpublished content
 
-### 24.3 Orphan-page prevention
+### 25.3 Orphan-page prevention
 
 No indexable page may be published without:
 
@@ -1006,9 +1041,9 @@ No indexable page may be published without:
 - A content owner
 - A defined user purpose
 
-## 26. Content discovery and taxonomy
+## 27. Content discovery and taxonomy
 
-### 25.1 Initial insight topics
+### 26.1 Initial insight topics
 
 - Digital Infrastructure
 - Media Buying
@@ -1021,7 +1056,7 @@ No indexable page may be published without:
 - Product Building
 - Reputation and Trust
 
-### 25.2 Report categories
+### 26.2 Report categories
 
 - Market Intelligence
 - Competitor Intelligence
@@ -1032,7 +1067,7 @@ No indexable page may be published without:
 - Opportunity Research
 - Custom Commissioned Research
 
-### 25.3 Case-study filters
+### 26.3 Case-study filters
 
 Filters may include:
 
@@ -1043,7 +1078,7 @@ Filters may include:
 
 Filters should only be implemented when sufficient content exists. Empty or nearly empty filters should not appear at launch.
 
-## 27. Search and filtering flow
+## 28. Search and filtering flow
 
 Site search is optional for version 1.
 
@@ -1067,7 +1102,7 @@ Search must exclude:
 - Personal enquiry data
 - Preview URLs
 
-## 28. Cross-device flow continuity
+## 29. Cross-device flow continuity
 
 Users must be able to complete all primary flows on mobile without switching devices.
 
@@ -1083,9 +1118,9 @@ Required mobile behaviours:
 - Embedded booking experiences remain usable or open through an accessible alternative.
 - Tap-to-call and approved WhatsApp actions may be used where appropriate.
 
-## 29. States and recovery flows
+## 30. States and recovery flows
 
-### 29.1 Loading states
+### 30.1 Loading states
 
 Loading states must:
 
@@ -1095,7 +1130,7 @@ Loading states must:
 - Avoid indefinite animation
 - Provide recovery if loading fails
 
-### 29.2 Empty states
+### 30.2 Empty states
 
 Required empty states may include:
 
@@ -1106,7 +1141,7 @@ Required empty states may include:
 
 Each must explain what happened and provide a useful alternative.
 
-### 29.3 Error states
+### 30.3 Error states
 
 Error messages must:
 
@@ -1117,7 +1152,7 @@ Error messages must:
 - Provide a retry or alternative
 - Be announced to assistive technology
 
-### 29.4 Not-found page
+### 30.4 Not-found page
 
 The not-found experience must:
 
@@ -1127,7 +1162,7 @@ The not-found experience must:
 - Use a restrained brand expression
 - Return the correct HTTP status
 
-### 29.5 Submission failures
+### 30.5 Submission failures
 
 A failed submission must never display success.
 
@@ -1138,7 +1173,7 @@ The user should receive:
 - An alternative contact route where appropriate
 - No duplicate submission caused by uncontrolled retry
 
-## 30. Analytics flow map
+## 31. Analytics flow map
 
 The following transitions must be measurable:
 
@@ -1163,7 +1198,7 @@ Analytics must not capture:
 - Sensitive personal data
 - Authentication credentials
 
-## 31. SEO flow requirements
+## 32. SEO flow requirements
 
 Search engines should be able to move through the site using:
 
@@ -1186,7 +1221,7 @@ The crawl path should prioritise:
 
 Campaign duplicates, previews, drafts, internal search results and administrative routes must not enter the index.
 
-## 32. Content-governance flow
+## 33. Content-governance flow
 
 ```mermaid
 flowchart TD
@@ -1213,7 +1248,7 @@ Legal or professional review is required when content includes:
 - Guarantees or performance claims
 - Intellectual-property claims
 
-## 33. Navigation and architecture acceptance criteria
+## 34. Navigation and architecture acceptance criteria
 
 The architecture is ready for implementation when:
 
@@ -1235,7 +1270,7 @@ The architecture is ready for implementation when:
 16. The architecture can support additional approved services without restructuring the whole platform.
 17. Stakeholder approval is recorded.
 
-## 34. Decisions required before UI design is finalised
+## 35. Decisions required before UI design is finalised
 
 The following decisions remain open:
 
@@ -1253,7 +1288,7 @@ The following decisions remain open:
 - Approved report samples
 - Final public status of LegalFlashcards9ja
 
-## 35. Immediate next steps
+## 36. Immediate next steps
 
 1. Review and approve this architecture.
 2. Create the Brand and Design System document.
@@ -1264,7 +1299,7 @@ The following decisions remain open:
 7. Create individual Stitch prompts beginning with the homepage.
 8. Validate the designed flows on mobile, tablet and desktop before engineering.
 
-## 36. Approval
+## 37. Approval
 
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
