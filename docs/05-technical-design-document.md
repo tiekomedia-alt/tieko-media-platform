@@ -1,7 +1,7 @@
 # Tieko Media Platform: Technical Design Document
 
 **Document ID:** TMP-05  
-**Version:** 0.1  
+**Version:** 0.2  
 **Status:** Working draft  
 **Date:** 16 September 2026  
 **Owner:** Tieko Media Limited  
@@ -104,18 +104,20 @@ The Data and Records Management page is a professional service page. The website
 | Styling | Tailwind CSS plus CSS custom properties and scoped CSS where needed | Token-driven responsive styling and precise brand implementation |
 | Component foundation | Accessible headless primitives where justified | Menus, dialogs, accordions and focus management |
 | CMS | Sanity | Pages, services, articles, reports, case studies, people, navigation and SEO content |
-| Operational database | Supabase Postgres | Enquiries, bookings metadata, assessment results, consent and audit records |
 | Validation | Zod or an equivalent TypeScript schema validator | Shared input and environment validation |
-| Hosting | Vercel | Next.js deployment, previews, edge network and deployment controls |
+| Hosting | Firebase App Hosting | Next.js deployment, GitHub rollouts, Cloud Run serving and Cloud CDN delivery |
+| Operational database | Cloud Firestore | Enquiries, assessment results, consent, attribution and audit records |
+| Administrative authentication | Firebase Authentication | Protected operational access if a custom interface is later required |
+| Application protection | Firebase App Check plus server-side controls | Reduce unauthorised access to Firebase-backed application resources |
 | Media delivery | Sanity image pipeline for CMS assets | Responsive image transformations and delivery |
 | Transactional email | Resend or approved equivalent | Enquiry and assessment notifications |
 | Booking | Cal.com, Calendly or approved equivalent | Scheduling without building calendar infrastructure |
 | Bot protection | Cloudflare Turnstile or approved equivalent | Human verification with server-side validation |
-| Rate limiting | Managed Redis or platform-native durable rate limiting | Abuse prevention across distributed instances |
-| Analytics | Plausible or GA4, subject to approval | Privacy-aware traffic and conversion measurement |
-| Error monitoring | Sentry or approved equivalent | Application errors and performance diagnostics |
+| Rate limiting | Durable server-side limiter selected during implementation | Abuse prevention across distributed App Hosting instances |
+| Analytics | Google Analytics 4 or a privacy-focused alternative, subject to approval | Consent-aware traffic and conversion measurement |
+| Error monitoring | Google Cloud Logging and Error Reporting initially | Application and infrastructure diagnostics without another launch provider |
 | Search monitoring | Google Search Console and Bing Webmaster Tools | Indexing and search performance |
-| CI | GitHub Actions and Vercel checks | Automated quality gates |
+| CI | GitHub Actions and Firebase App Hosting rollouts | Automated quality gates |
 
 ### 4.1 Version policy
 
@@ -142,14 +144,15 @@ The repository must specify the package-manager version and Node.js version.
 
 ```mermaid
 flowchart TD
-    U["Visitor"] --> V["Vercel and Next.js"]
+    U["Visitor"] --> V["Firebase App Hosting and Next.js"]
     V --> S["Sanity CMS"]
-    V --> P["Supabase Postgres"]
+    V --> P["Cloud Firestore"]
     V --> B["Booking provider"]
     V --> E["Email provider"]
     V --> R["Rate limit and bot controls"]
     C["Content editor"] --> S
-    A["Authorised administrator"] --> P
+    A["Authorised administrator"] --> F["Firebase Authentication"]
+    F --> P
 ```
 
 ### 5.1 Trust boundaries
@@ -158,7 +161,7 @@ flowchart TD
 - CMS content is trusted only after schema validation and editorial approval.
 - Webhooks are untrusted until signatures and replay protections are verified.
 - Third-party booking and email responses must be validated.
-- Supabase secret keys remain server-only.
+- Firebase service-account credentials remain server-only.
 - Sanity write tokens remain server-only.
 - Public analytics must never receive sensitive form content.
 - Administrative access must use strong authentication and least privilege.
@@ -483,7 +486,7 @@ Editors may reorder permitted sections, but cannot inject arbitrary scripts, raw
 
 ## 12. Operational database
 
-Supabase Postgres will hold structured operational data.
+Cloud Firestore will hold structured operational data.
 
 Initial domains:
 
@@ -504,20 +507,32 @@ Initial domains:
 
 Detailed schema belongs in TMP-06.
 
-### 12.1 Database rules
+### 12.1 Firestore design principles
 
-- Deny public table access by default.
-- Enable Row Level Security on exposed Supabase tables.
-- Prefer server-only writes for public forms.
-- Never expose the service-role key.
-- Use a restricted database role for the application.
-- Use parameterised queries through an approved client.
-- Apply database constraints in addition to application validation.
-- Create indexes from observed query needs.
-- Keep migrations in version control.
-- Do not edit production schema manually without a recorded migration.
-- Separate production and non-production projects.
+Firestore is document-oriented and schemaless. Application schemas remain mandatory even though the database does not enforce a relational schema.
+
+Use immutable identifiers, server timestamps, explicit schemaVersion fields, deliberate denormalisation, transactions where atomicity is needed and time-to-live policies where appropriate.
+
+Avoid deeply nested subcollections, unbounded arrays, hot documents, unnecessary real-time listeners, client-generated authoritative scores and use of Firestore as a replacement for the Sanity editorial CMS.
+
+### 12.2 Database rules
+
+- Deny browser reads and writes by default.
+- Send public forms through validated server-side handlers rather than direct Firestore client writes.
+- Use Firebase Admin SDK only in trusted server environments.
+- Apply least-privilege Google Cloud IAM because server libraries bypass Firestore Security Rules.
+- Never expose service-account credentials.
+- Validate document fields, types, lengths and allowed values before every write.
+- Use Firestore Security Rules for any approved client-side access.
+- Test Security Rules with the Firebase Emulator Suite.
+- Treat Security Rules as access controls, not as a substitute for server-side business validation.
+- Create composite indexes only for approved query patterns.
+- Avoid unbounded collection scans.
+- Keep indexes, rules and configuration in version control.
+- Use versioned application migrations for document-shape changes.
+- Separate production and non-production Firebase projects.
 - Do not copy production personal data into development.
+- Avoid placing data with different access permissions in the same document because Firestore reads return complete documents.
 
 ## 13. Forms and enquiry handling
 
@@ -552,8 +567,8 @@ Do not accept HTML in ordinary text fields.
 
 ### 13.3 Injection protection
 
-- Use parameterised database operations.
-- Never concatenate untrusted input into SQL.
+- Use approved Firestore SDK operations with validated collection names, document identifiers and fields.
+- Never construct collection paths, document paths or field names directly from untrusted input.
 - Escape output according to its destination.
 - Do not pass form text into shell commands.
 - Do not allow user-controlled template execution.
@@ -719,8 +734,8 @@ Public visitors do not need accounts for version 1.
 Administrative access should be divided:
 
 - CMS editors use Sanity authentication and roles.
-- Operational administrators use Supabase or a protected internal interface only if required.
-- Deployment access uses GitHub and Vercel roles.
+- Operational administrators use Firebase console or a protected internal interface only if required.
+- Deployment access uses GitHub and Firebase, Google Cloud and GitHub roles.
 - Provider dashboards use named accounts, not shared credentials.
 
 Requirements:
@@ -779,7 +794,7 @@ CSP should start in report-only mode during integration, then move to enforcemen
 
 The threat model must cover:
 
-- SQL injection
+- Injection through document paths, field names, templates or downstream integrations
 - Cross-site scripting
 - Cross-site request forgery
 - Server-side request forgery where URL fetching exists
@@ -1016,7 +1031,8 @@ Cover:
 Cover:
 
 - CMS query mapping
-- Database writes
+- Firestore writes and document-shape validation
+- Firestore Security Rules and Emulator Suite tests
 - Rate-limit behaviour
 - Bot verification
 - Email provider adapter
@@ -1049,7 +1065,7 @@ Include:
 - Invalid and oversized payloads
 - Unknown fields
 - Script input
-- SQL injection strings
+- Malicious document paths, oversized values and injection strings
 - Header injection attempts
 - Repeated submissions
 - Forged webhook requests
@@ -1119,12 +1135,14 @@ Use separate environments:
 Requirements:
 
 - Separate CMS datasets or strict preview rules.
-- Separate Supabase projects for production and non-production.
+- Separate Firebase projects for production and non-production.
 - Separate provider keys.
 - No production email delivery from local development.
 - Visible non-production indicators.
 - Non-production noindex.
 - Production data must not be downloaded into developer machines without authorised necessity and controls.
+- Local development should use the Firebase Emulator Suite wherever practical.
+- Preview builds must never connect silently to production resources.
 
 ## 29. Deployment
 
@@ -1155,15 +1173,34 @@ Database migrations must be backward-compatible where possible and applied throu
 
 ### 30.2 Operational database
 
-- Enable the appropriate Supabase backup capability.
+- Enable scheduled Firestore backups or exports appropriate to the selected plan.
 - Document recovery point and recovery time objectives.
-- Remember that database backups and object storage may have different recovery behaviour.
-- Export critical configuration and policies.
-- Test restoration in a non-production environment.
+- Remember that Firestore exports and Cloud Storage objects have separate recovery behaviour.
+- Export Security Rules, indexes, IAM configuration and application configuration through version-controlled or documented processes.
+- Test restoration in a non-production Firebase project.
+- Do not assume deletion of a document can always be reversed.
 
-### 30.3 Source and configuration
+### 30.3 Cost management
 
-- GitHub is the source of truth for code and migrations.
+Firebase reduces infrastructure work, but Firebase App Hosting requires the Blaze pay-as-you-go plan. The architecture must therefore control both technical risk and billing risk.
+
+- Configure Google Cloud budgets and billing alerts before public launch.
+- Treat alerts as notifications, not automatic spending caps.
+- Restrict who can enable new billable services.
+- Monitor Firestore reads, writes, deletes, storage and network egress.
+- Avoid uncontrolled real-time listeners and unnecessary collection reads.
+- Cache public content and repeated safe lookups.
+- Protect endpoints from bot-driven cost amplification.
+- Use App Check, Turnstile and rate limits where appropriate.
+- Review App Hosting scaling and Cloud Build usage.
+- Conduct weekly cost reviews during launch and monthly reviews afterwards.
+- Establish warning and escalation thresholds.
+
+No document should describe Firebase as completely free. Expected launch cost may be low, but billing depends on traffic, builds, database operations, bandwidth and enabled Google Cloud services.
+
+### 30.4 Source and configuration
+
+- GitHub is the source of truth for code, Security Rules, indexes and versioned data-shape migrations.
 - Document DNS, domain and provider configuration.
 - Keep infrastructure ownership information current.
 - Store recovery codes securely outside ordinary source control.
@@ -1244,12 +1281,12 @@ The following decisions are recommended:
 |---|---|---|
 | Frontend | Next.js App Router with TypeScript | Strong server rendering, metadata and deployment ecosystem |
 | Public content | Sanity | Structured editorial workflow and flexible content modelling |
-| Operational data | Supabase Postgres | Relational integrity, policies, backups and future extensibility |
+| Operational data | Cloud Firestore | Relational integrity, policies, backups and future extensibility |
 | Public accounts | None for version 1 | Avoid unnecessary authentication and personal data |
 | File uploads | Disabled for public version 1 | Reduce risk and avoid confidential-document collection |
 | Admin dashboard | Use provider interfaces initially | Avoid premature custom administration |
 | Health Check score | Server-verified | Prevent manipulation and preserve versioned rules |
-| Hosting | Vercel initially | Direct Next.js support and previews |
+| Hosting | Firebase App Hosting | Native Next.js support, GitHub integration and reuse of the Firebase ecosystem |
 | Booking | Third-party provider | Avoid building complex calendar infrastructure |
 | Page building | Controlled section allowlist | Preserve quality, security and brand consistency |
 
@@ -1259,8 +1296,8 @@ Before implementation begins, approve:
 
 - Final domain and canonical host
 - Sanity plan and project ownership
-- Supabase region and plan
-- Vercel team ownership
+- Firebase and Google Cloud region, project and billing plan
+- Firebase and Google Cloud project ownership
 - Booking provider
 - Transactional email provider
 - Analytics platform
@@ -1286,7 +1323,8 @@ Before implementation begins, approve:
 - Configure linting, formatting and tests
 - Establish design tokens
 - Create repository structure
-- Configure environments
+- Configure Firebase projects, emulators and environments
+- Configure App Hosting and billing alerts
 - Add CI
 - Create base layout and sticky navigation
 
@@ -1316,7 +1354,7 @@ Before implementation begins, approve:
 
 ### Phase D: Operational features
 
-- Supabase schema
+- Firestore collection design
 - General enquiry
 - Service enquiries
 - Consent records
@@ -1384,10 +1422,13 @@ Implementation should follow current official guidance, including:
 - [Next.js backend-for-frontend guidance](https://nextjs.org/docs/app/guides/backend-for-frontend)
 - [Sanity and Next.js integration](https://www.sanity.io/docs/nextjs)
 - [Sanity GROQ-powered webhooks](https://www.sanity.io/docs/content-lake/webhooks)
-- [Supabase database guidance](https://supabase.com/docs/guides/database/overview)
-- [Supabase API key guidance](https://supabase.com/docs/guides/getting-started/api-keys)
-- [Supabase storage guidance](https://supabase.com/docs/guides/storage)
-- [Supabase database backups](https://supabase.com/docs/guides/platform/backups)
+- [Firebase App Hosting](https://firebase.google.com/docs/app-hosting)
+- [Firebase App Hosting architecture](https://firebase.google.com/docs/app-hosting/about-app-hosting)
+- [Cloud Firestore Security Rules](https://firebase.google.com/docs/firestore/security/get-started)
+- [Testing Firestore Security Rules](https://firebase.google.com/docs/firestore/security/test-rules-emulator)
+- [Secure data in Cloud Firestore](https://firebase.google.com/docs/firestore/security/overview)
+- [Firebase Authentication](https://firebase.google.com/docs/auth)
+- [Firebase pricing](https://firebase.google.com/pricing)
 - [OWASP Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)
 - [OWASP File Upload Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html)
 - [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html)
@@ -1396,8 +1437,8 @@ Implementation should follow current official guidance, including:
 
 ## 38. Immediate next steps
 
-1. Review and approve the recommended stack.
-2. Create TMP-06 Data and Backend Schema.
+1. Review and approve the Firebase-led recommended stack.
+2. Create TMP-06 Data and Backend Schema using Firestore collections, Security Rules and retention policies.
 3. Decide the open provider choices before implementation.
 4. Create the page-level content brief template and first briefs.
 5. Create the Stitch master prompt from the approved content hierarchy and design system.
