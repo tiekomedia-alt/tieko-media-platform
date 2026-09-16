@@ -333,6 +333,7 @@ The desktop and mobile navigation must provide access to:
 - /team
 - /contact
 - /book-a-call
+- /tools/digital-business-health-check
 
 #### Priority service pages
 
@@ -854,6 +855,55 @@ The content system should provide:
 
 Core layout and security-critical configuration must not be editable through unrestricted rich text.
 
+### 20.1 Controlled modular page system
+
+Authorised administrators must be able to create approved new pages without rebuilding the application.
+
+The system must support controlled page creation for:
+
+- Services
+- Campaign landing pages
+- Tools and assessments
+- Products
+- Reports
+- Case studies
+- Insights
+- General informational pages
+
+New pages must be assembled from approved structured sections such as:
+
+- Hero
+- Rich text
+- Image and text
+- Process
+- Deliverables
+- Evidence
+- Case study
+- FAQ
+- Related content
+- CTA
+- Form
+- Assessment
+- Report preview
+
+The system must not provide unrestricted code injection, arbitrary scripts or ungoverned layout controls.
+
+Every new public page must require:
+
+- Page purpose
+- Content owner
+- Approved route
+- Publication status
+- SEO title and description
+- Canonical decision
+- Social-sharing fields
+- Accessibility fields
+- Internal-link plan
+- Review and approval
+- Sitemap and indexing decision
+
+This controlled modular system must allow Tieko to expand without creating inconsistent pages or security risks.
+
 ## 21. Search requirements
 
 Site search is desirable but not mandatory for initial launch. If included, it must:
@@ -1203,6 +1253,10 @@ Final selections belong in the Technical Design Document.
 - Book a Call
 - Legal and privacy pages
 - Secure enquiry forms
+- Tieko Digital Business Health Check MVP
+- Immediate indicative score and dimension results
+- Paid Digital Presence and Infrastructure Audit pathway
+- Controlled modular creation of approved new pages
 - Content management for approved content types
 - SEO foundation
 - Analytics foundation
@@ -1352,7 +1406,11 @@ Version 1 will be considered ready for production only when:
 24. The platform passes the approved browser and device matrix.
 25. The production deployment has backup, monitoring and recovery procedures.
 26. The platform passes the Anti-AI-Slop Policy in TMP-02, including evidence checks for statistics, client logos, testimonials and FAQs.
-27. Stakeholder approval is recorded.
+27. The sticky global navigation remains usable, stable and accessible on every public page while scrolling.
+28. The Digital Business Health Check displays an immediate indicative result without forcing email submission.
+29. The assessment does not present legal compliance, security certification or guaranteed performance.
+30. Administrators can create approved new pages from controlled modules without arbitrary code execution.
+31. Stakeholder approval is recorded.
 
 ## 38. Required follow-up documents
 
@@ -1381,3 +1439,56 @@ This PRD must be supported by:
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+
+
+## Appendix A: Digital Business Health Check product requirement
+
+The Tieko Digital Business Health Check is a free interactive assessment and marketing tool that helps a business understand the strength of its digital foundation.
+
+### Product outcome
+
+The tool should help a user answer:
+
+- How digitally sound is the business?
+- Which foundations are strong?
+- Which weaknesses are most urgent?
+- What should be addressed first?
+- When is a professional audit justified?
+
+### Free assessment requirements
+
+The MVP must:
+
+- Take approximately three to five minutes
+- Use plain-language questions
+- Score eight defined dimensions
+- Display the result immediately
+- Provide an overall score from 0 to 100
+- Show dimension-level results
+- Identify three priority actions
+- Recommend relevant services and insights
+- Offer optional email delivery
+- Offer a paid professional audit
+- Include a clear indicative-result disclaimer
+- Avoid collecting sensitive information
+
+### Assessment dimensions
+
+1. Business Identity and Compliance
+2. Website and Technical Foundation
+3. Search Discoverability
+4. Content and Brand Consistency
+5. Customer Acquisition and Conversion
+6. Data, Analytics and Measurement
+7. Reputation and Trust
+8. Privacy and Security Readiness
+
+### Paid audit conversion
+
+The professional offer will be called the **Digital Presence and Infrastructure Audit** unless later renamed.
+
+It should convert the self-assessment into an evidence-based engagement with verified findings, risks, priorities, quick wins and a sequenced roadmap.
+
+### Originality requirement
+
+Tieko may learn from assessment products used by other organisations, but the questions, scoring logic, copy, dimensions, result bands and recommendations must be original to Tieko Media.
