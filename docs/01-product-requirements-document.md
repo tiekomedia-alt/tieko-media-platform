@@ -754,7 +754,7 @@ The booking experience must:
 - Provide confirmation
 - Handle unavailable slots
 - Support timezone clarity
-- link to privacy information;
+- Link to privacy information
 - Avoid implying that a legal professional relationship is created
 - Support service attribution
 
@@ -1111,7 +1111,7 @@ It must not:
 
 - Obstruct content
 - Reduce contrast
-- cause horizontal scrolling;
+- Cause horizontal scrolling
 - Overwhelm mobile layouts
 - Compete with primary actions
 - Appear in every section without purpose
