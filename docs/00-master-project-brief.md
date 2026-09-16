@@ -1,7 +1,7 @@
 # Tieko Media Platform: Master Project Brief
 
 **Document ID:** TMP-00  
-**Version:** 0.1  
+**Version:** 0.2  
 **Status:** Working foundation  
 **Date:** 16 September 2026  
 **Owner:** Tieko Media Limited  
@@ -94,6 +94,7 @@ Relevant capabilities include:
 - Business automation
 - Content systems
 - Data and analytics infrastructure
+- Records digitisation and information-governance systems
 - Conversion systems
 - Search-led digital assets
 - Product research and development
@@ -128,6 +129,8 @@ Relevant capabilities include:
 - Search-demand intelligence
 - Regulatory research
 - Data analysis
+- Data discovery and intelligence
+- Records and information governance
 - Digital presence audits
 - Online reputation management
 - Data-governance support
@@ -136,7 +139,7 @@ Relevant capabilities include:
 
 ## 6. Launch service portfolio
 
-The initial website launch will prioritise seven services.
+The initial website launch will prioritise eight services.
 
 ### 6.1 Media Buying
 
@@ -242,7 +245,8 @@ Press release strategy, drafting, preparation and distribution through appropria
 
 Initial service URL:
 
-/services/press-release-services
+/services/press-release-services  
+/services/data-records-management
 
 This may include:
 
@@ -255,6 +259,30 @@ This may include:
 - Coverage reporting
 
 The website must not guarantee publication, editorial approval, rankings or media coverage outside Tieko Media’s direct control.
+
+### 6.8 Data and Records Management
+
+Secure, structured management of institutional and business records across their lifecycle, from capture and classification to retention, retrieval, archival storage and lawful disposal.
+
+Initial service URL:
+
+/services/data-records-management
+
+This may include:
+
+- Records retention schedule development
+- Digitisation and document imaging
+- Data classification, indexing and metadata design
+- Secure archiving and storage coordination
+- Access-control and information-handling procedures
+- Data discovery and intelligence from authorised records
+- Data-loss and leakage risk assessment
+- Compliance readiness and audit support
+- Secure document destruction coordination
+- Information-governance framework design
+- Records workflow and operational-process optimisation
+
+Tieko Media may work with approved specialist partners for physical storage, scanning, hosting, security or destruction. The responsible provider, storage location, data-handling terms, confidentiality duties and applicable legal basis must be disclosed in the engagement. Tieko must not claim to prevent every data leak or guarantee absolute security.
 
 ## 7. Products and ventures
 
@@ -539,6 +567,7 @@ Insights should build authority around:
 - Content systems
 - AI and business
 - Data and analytics
+- Data and records management
 - Compliance
 - African market intelligence
 - Product building
