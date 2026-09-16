@@ -1000,12 +1000,23 @@ Recommended visual treatment:
 
 ### Sticky behaviour
 
-The header may become sticky after initial scroll if:
+The global header must remain available throughout every public page and while the user scrolls.
 
-- It remains compact
-- It does not cover content
-- It does not create distracting animation
-- Anchor destinations account for its height
+Required behaviour:
+
+- Use sticky or fixed positioning consistently.
+- Remain compact enough not to consume excessive vertical space.
+- Preserve access to the primary navigation and Book a Call.
+- Use an opaque or sufficiently legible surface after scrolling.
+- Avoid dramatic shrinking, morphing or animated effects.
+- Do not cover content.
+- Account for header height when navigating to anchored sections.
+- Preserve keyboard and screen-reader usability.
+- Avoid layout shift when the sticky state activates.
+- Respect mobile safe areas.
+- Provide the same core destinations on desktop and mobile.
+
+The permanent header should create orientation and continuity, not visual distraction.
 
 ## 21. Hero design
 
