@@ -1,7 +1,7 @@
 # Tieko Media Platform: SEO and Content Architecture
 
 **Document ID:** TMP-04  
-**Version:** 0.1  
+**Version:** 0.2  
 **Status:** Working draft  
 **Date:** 16 September 2026  
 **Owner:** Tieko Media Limited  
@@ -37,7 +37,7 @@ SEO is not a separate marketing layer. It must be built into the information arc
 
 The programme has five commercial objectives:
 
-1. Generate qualified Book a Call enquiries for the seven launch services.
+1. Generate qualified Book a Call enquiries for the eight launch services.
 2. Build authority around digital intelligence and infrastructure for African businesses.
 3. Create demand for paid intelligence reports and commissioned research.
 4. Demonstrate product-building capability through TeamShuffle and approved future products.
@@ -81,7 +81,7 @@ The website should organise Tieko's breadth into four understandable capabilitie
 |---|---|---|
 | Build visibility | Reach the right audience and become easier to find | Media Buying, Digital Presence Optimisation, Billboard Advertising |
 | Build authority | Communicate consistently and credibly | Content Creation, Press Release Services |
-| Build foundations | Establish sound business and digital systems | Compliance, Digital Presence Optimisation |
+| Build foundations | Establish sound business, records and digital systems | Compliance, Data and Records Management, Digital Presence Optimisation |
 | Build intelligence | Make better decisions with evidence | Intelligence Reports, research and analysis |
 
 This model should guide internal links and page introductions, but each service page must own a distinct search intent.
@@ -100,6 +100,7 @@ Tieko should lead with Nigeria and Africa where this is accurate. International 
 | Investor, executive or strategist | Needs evidence before a decision | Research and transactional | Intelligence hub or Intelligence Reports |
 | Nigerian or foreign business | Needs company, trademark or licence support | Commercial and informational | Compliance |
 | Product or operations leader | Needs a digital product or system | Capability discovery | Products, Work or Book a Call |
+| Records or operations lead | Needs to digitise, govern, retrieve or protect institutional records | Commercial | Data and Records Management |
 | Research-led visitor | Has a specific question | Informational | Relevant insight article, then service or report |
 | Referred visitor | Already trusts Tieko and wants the next step | Navigational and transactional | Book a Call |
 
@@ -131,6 +132,7 @@ The phrases below are working topic targets, not guaranteed rankings or final vo
 | /services/intelligence-reports | business intelligence reports Africa | market research Nigeria, competitor intelligence, market entry research, regulatory intelligence | Commercial | Commission a Report |
 | /services/billboard-advertising | billboard advertising Nigeria | billboard advertising Lagos, outdoor advertising agency, LED billboard, billboard campaign planning | Commercial | Plan a Billboard Campaign |
 | /services/press-release-services | press release services Nigeria | press release writing, press release distribution Nigeria and Africa, media outreach, announcement strategy | Commercial | Discuss an Announcement |
+| /services/data-records-management | data and records management services Nigeria | document digitisation Nigeria, records management, secure archiving, information governance, document indexing, data discovery | Commercial | Book a Data Management Call |
 | /tools/digital-business-health-check | digital business assessment | digital presence score, digital maturity assessment, online presence audit, digital marketing audit | Diagnostic | Start the Free Check |
 | /intelligence | African business intelligence | market intelligence Africa, research and strategic intelligence | Authority and commercial | Explore Reports |
 | /reports | African market intelligence reports | research reports Nigeria, industry reports Africa | Transactional and research | View Reports |
@@ -148,6 +150,7 @@ The phrases below are working topic targets, not guaranteed rankings or final vo
 - The Intelligence Reports service page owns commissioning. The Intelligence hub establishes capability. Individual report pages target the subject of each report.
 - The Compliance page owns service enquiries. Articles explain processes at a high level and require professional review.
 - The Press Release Services page owns writing and distribution enquiries. Articles answer newsworthiness, process and placement questions.
+- The Data and Records Management page owns digitisation, records lifecycle, governance, archiving and authorised data-discovery enquiries. Articles answer narrower retention, classification, indexing, leakage-risk and workflow questions.
 - The Billboard page owns campaign planning. Articles may address cost factors, format selection, locations and measurement.
 
 ## 8. Service content clusters
@@ -321,6 +324,36 @@ Priority supporting content:
 7. How to measure a press release campaign
 8. When a press release should support a wider campaign
 
+### 8.8 Data and Records Management
+
+Core commercial topics:
+
+- Data management services Nigeria
+- Records management services Nigeria
+- Document digitisation Nigeria
+- Document imaging services
+- Secure records archiving
+- Information governance Nigeria
+- Records retention schedule
+- Data classification and indexing
+- Data discovery and intelligence
+- Secure document destruction
+
+Priority supporting content:
+
+1. How to digitise paper records without creating digital disorder
+2. What is a records retention schedule?
+3. Data classification and document indexing explained
+4. How law firms can digitise and retrieve matter records securely
+5. Physical archives versus digital archives: what organisations should consider
+6. How poor records management increases data leakage risk
+7. What should an information governance framework contain?
+8. When and how should confidential records be destroyed?
+9. Turning overlooked organisational data into useful intelligence
+10. A records management readiness checklist for institutions
+
+Public copy should prefer data discovery, authorised analysis and information intelligence over the vague phrase data mining. Any extraction, enrichment or analysis must have a documented purpose, lawful basis, authorised source and defined retention period.
+
 ## 9. Digital Business Health Check search strategy
 
 The Health Check should be positioned as a practical assessment of a business's digital foundations, not as a legal, security or financial certification.
@@ -360,7 +393,7 @@ The score results should be rendered as meaningful HTML where privacy and person
 | Content and Reputation | Build credible communication and public trust | Content, press release |
 | Compliance and Business Identity | Explain business foundations and risk-aware next steps | Compliance |
 | African Market Intelligence | Support market, competitor and investment decisions | Intelligence reports |
-| Data and Measurement | Improve tracking, analytics and decision quality | Optimisation, media buying, intelligence |
+| Data, Records and Measurement | Improve governance, retrieval, analytics and decision quality | Data and Records Management, optimisation, media buying, intelligence |
 | Product Building | Demonstrate Tieko's ability to create useful digital products | Products, work |
 | AI and Business | Provide practical, evidence-based guidance without hype | Optimisation, intelligence, products |
 
@@ -376,6 +409,7 @@ The first publishing cycle should favour depth and commercial relevance over vol
 4. What determines billboard advertising cost in Lagos?
 5. What is a business intelligence report?
 6. Company registration in Nigeria: information to prepare
+7. How to digitise paper records without creating digital disorder
 
 ### Month 2: Decision support
 
@@ -394,8 +428,9 @@ The first publishing cycle should favour depth and commercial relevance over vol
 16. How to build a repeatable content system
 17. Common compliance gaps that slow business growth
 18. How to measure whether your digital presence is working
+19. How poor records management increases data leakage risk
 
-Publication cadence should be adjusted to Tieko's ability to research, review and maintain the work. Six strong pieces per month is a target, not a quota.
+Publication cadence should be adjusted to Tieko's ability to research, review and maintain the work. Six or seven strong pieces per month is a target, not a quota.
 
 ## 12. Content quality standard
 
@@ -808,7 +843,7 @@ Rankings alone are not a business outcome.
 ### P0 before public launch
 
 - Homepage metadata and organisation entity
-- Services hub and seven service-page briefs
+- Services hub and eight service-page briefs
 - Digital Business Health Check brief
 - Book a Call conversion tracking
 - About, Contact and legal pages
@@ -908,7 +943,7 @@ Competitor references inform category language and user expectations only. Tieko
 1. Confirm the Google Business Profile URL and current review count.
 2. Validate the working topic set with live keyword data.
 3. Approve the first six editorial briefs.
-4. Write page-level content briefs for the homepage and seven services.
+4. Write page-level content briefs for the homepage and eight services.
 5. Add technical SEO requirements to the TDD.
 6. Create the Data and Backend Schema document.
 7. Create the Stitch master prompt after content hierarchy is approved.
