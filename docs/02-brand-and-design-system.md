@@ -1339,3 +1339,153 @@ The following remain open:
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+
+
+## Appendix A: Anti-AI-Slop Policy
+
+### A.1 Purpose
+
+The Tieko Media website must not resemble a generic AI-generated agency, software or startup template.
+
+A design may be technically polished and still fail if it lacks judgement, evidence, cultural specificity or a recognisable Tieko point of view.
+
+The following patterns are prohibited unless the project lead expressly approves a specific, evidence-based exception.
+
+### A.2 Prohibited visual patterns
+
+Do not use:
+
+- Aurora-style colour fields behind the hero
+- Purple as a default technology colour
+- Rainbow accents
+- Gradient text applied to one word for artificial emphasis
+- Floating pill-shaped numbers
+- Pill-shaped buttons throughout the interface
+- Excessive rounded cards
+- Icons placed automatically inside rounded gradient squares
+- Animated gradient card borders
+- Mouse-follow glow
+- Neon, coloured glow or luminous shadow effects
+- Random abstract 3D blobs
+- Generic 3D product shapes
+- AI-generated illustrations used merely to fill space
+- Fake-looking product photography
+- Generic team stock photography
+- Overlapping stock avatars
+- Tilted three-dimensional browser frames
+- A generic chat-bubble mock-up as the homepage hero
+- Rain, grain or noise texture applied indiscriminately over the entire interface
+- Overly polished symmetry that removes editorial tension and human character
+- Floating elements that do not communicate information
+- Decorative animation that competes with the message
+
+Tieko may use texture, three-dimensional ribbon assets, diagrams or motion only when they are part of the approved brand system and serve a clear compositional or explanatory purpose.
+
+### A.3 Prohibited interaction patterns
+
+Do not use:
+
+- Fade-up animation on every section and element
+- Scroll hijacking
+- Continuous motion without purpose
+- Infinite logo marquees
+- Repeated CTA buttons after every short section
+- Six or more identical CTAs on one page without a conversion rationale
+- Hover effects that conceal essential information
+- Footer links that point to hash placeholders
+- Newsletter forms without an audience, content promise and operational publishing plan
+- Waitlists for products that are already publicly available
+- Non-functional buttons, forms, menus or cookie controls
+- Cookie banners that function while the underlying conversion experience does not
+- Interaction added only to make the page feel technological
+
+The global Book a Call action may appear in the header, one contextually appropriate point within long content and the final conversion section. Additional occurrences require a user-flow reason.
+
+### A.4 Prohibited content patterns
+
+Do not use:
+
+- Vague buzzword-heavy headlines
+- Generic claims that could belong to any agency
+- Unexplained phrases such as “innovative solutions”, “unlock growth” or “transform your future”
+- Emojis as a substitute for interface design or professional writing
+- Unsourced statistics
+- Dashboard numbers without real data
+- Client logos without permission or a verifiable relationship
+- Testimonials from invented, composite or unverifiable people
+- Overly polished testimonials that have been rewritten into unnatural marketing language
+- Comparison tables constructed so Tieko wins every row
+- Red-X versus green-check comparisons that oversimplify competitors or customer choices
+- “Most Popular” labels without genuine behavioural or commercial justification
+- FAQs created only to occupy space
+- GitHub-star counts or other popularity signals used without meaningful context
+- Fabricated product screens
+- Fake activity feeds
+- False urgency
+- Guaranteed rankings, publication, virality, regulatory approval or campaign performance
+
+### A.5 Evidence rules
+
+Every public statistic must have:
+
+- An identified source
+- A defined measurement period
+- Appropriate context
+- Approval for publication
+
+Every client logo must have:
+
+- A verified relationship
+- Permission or another lawful basis for display
+- Correct current artwork
+- An internal approval record
+
+Every testimonial must have:
+
+- A real person or authorised organisational source
+- Original source evidence
+- Permission for publication
+- Only light editing for clarity
+- No change to the speaker’s meaning
+
+Every FAQ must originate from at least one of:
+
+- A real client or sales question
+- Search-demand research
+- Customer-support history
+- Regulatory clarification needs
+- A documented objection in the conversion journey
+
+### A.6 Authenticity requirements
+
+Every major page must contain at least one form of genuine Tieko-specific evidence, where relevant:
+
+- A real product
+- A verified case study
+- A defined method
+- An original framework
+- A source-backed insight
+- A real team member
+- An approved client result
+- A practical process
+- A concrete deliverable
+- An original African market observation
+
+A page should not rely entirely on visual polish to communicate credibility.
+
+### A.7 Design-review test
+
+Before approval, reviewers must ask:
+
+1. Could this page belong to any AI startup or generic agency?
+2. Does every visual device have a clear role?
+3. Are all numbers, logos and quotations verifiable?
+4. Are the FAQs based on real user needs?
+5. Is the primary CTA repeated only where the user journey requires it?
+6. Does the page show Tieko-specific evidence?
+7. Does the African character come from authentic structure and context?
+8. Would the page remain credible if all animation were removed?
+9. Are all controls and links functional?
+10. Does the page express judgement rather than generated abundance?
+
+If a page exhibits more than five prohibited patterns, it must return to design review rather than proceed to engineering.
