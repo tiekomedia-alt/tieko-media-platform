@@ -181,7 +181,7 @@ The header must include:
 - Book a Call
 - Accessible mobile-menu control
 
-The header may adapt visually as the user scrolls, but must maintain readability and avoid layout shifts.
+The header must remain permanently available on every public page as the user scrolls. It may adapt subtly after scrolling, but must remain readable, compact, stable and accessible without causing layout shifts.
 
 ### 5.2 Footer
 
@@ -273,6 +273,7 @@ flowchart TD
 | Press Release Services | /services/press-release-services | Press release preparation and distribution |
 | Products hub | /products | Approved owned products |
 | TeamShuffle | /products/teamshuffle | Product proof and live-product referral |
+| Digital Business Health Check | /tools/digital-business-health-check | Free scored self-assessment and qualified audit pathway |
 | Intelligence hub | /intelligence | Intelligence capability and report discovery |
 | Reports | /reports | Approved reports and briefings |
 | Report detail | /reports/[slug] | Report summary, sample and commissioning |
@@ -809,7 +810,162 @@ flowchart TD
 - Campaign claims must be verifiable.
 - The experience must work without third-party tracking consent where possible.
 
-## 24. Internal-linking system
+## 24. Digital Business Health Check flow
+
+The Tieko Digital Business Health Check is an original lead-generation and educational tool. It must not reproduce another company’s wording, scoring model or assessment framework.
+
+The tool has two levels:
+
+1. A free, short self-assessment that produces an immediate indicative score.
+2. A paid professional Digital Presence and Infrastructure Audit that produces verified findings and a prioritised roadmap.
+
+```mermaid
+flowchart TD
+    E["Campaign, search, article or service page"] --> L["Health Check landing page"]
+    L --> S["Start free assessment"]
+    S --> Q["Answer scored questions"]
+    Q --> R["Immediate score and category results"]
+    R --> G["Review priority gaps"]
+    G --> O{"Choose next step"}
+    O -->|Receive summary| M["Optional email delivery"]
+    O -->|Need professional review| B["Book paid audit call"]
+    O -->|Learn more| C["Relevant services and insights"]
+```
+
+### 24.1 Proposed assessment dimensions
+
+The free assessment should evaluate eight dimensions:
+
+1. Business Identity and Compliance
+2. Website and Technical Foundation
+3. Search Discoverability
+4. Content and Brand Consistency
+5. Customer Acquisition and Conversion
+6. Data, Analytics and Measurement
+7. Reputation and Trust
+8. Privacy and Security Readiness
+
+Each dimension must contain a small number of plain-language questions. Questions must assess observable practices rather than invite users to rate themselves vaguely.
+
+### 24.2 Scoring model
+
+The free tool should produce:
+
+- An overall score from 0 to 100
+- A score for each dimension
+- A short readiness band
+- Three immediate priorities
+- Relevant service or insight recommendations
+- A clear statement that the result is indicative, not a professional audit
+
+Proposed bands:
+
+| Score | Band | Meaning |
+|---|---|---|
+| 0 to 24 | Vulnerable Foundation | Critical business and digital foundations require attention |
+| 25 to 49 | Emerging Foundation | Important systems exist, but material gaps remain |
+| 50 to 74 | Established Presence | The business has useful foundations with identifiable optimisation opportunities |
+| 75 to 100 | Growth Ready | The business has strong systems and should focus on advanced optimisation and scale |
+
+The final formula, question weights and band language must be validated before launch. A high score must not imply legal compliance, security certification or guaranteed business performance.
+
+### 24.3 Result experience
+
+The user must see the overall score immediately after completing the assessment.
+
+The result page should include:
+
+- Overall score
+- Dimension scores
+- Plain-language interpretation
+- Strengths
+- Priority gaps
+- Three next actions
+- Relevant Tieko services
+- Link to the paid audit
+- Book a Call
+- Ability to receive a detailed summary by email where approved
+
+The basic score must not be hidden behind an email gate.
+
+Email delivery must:
+
+- Be optional
+- Use a separate marketing-consent choice
+- State what will be sent
+- Avoid pre-ticked consent
+- Store only necessary data
+- Provide truthful follow-up expectations
+
+### 24.4 Paid audit pathway
+
+The paid Digital Presence and Infrastructure Audit may include:
+
+- Evidence review
+- Website and technical assessment
+- Search visibility analysis
+- Content and brand consistency review
+- Conversion-path review
+- Analytics and measurement review
+- Reputation and trust review
+- Data, privacy and security observations
+- Compliance coordination where required
+- Prioritised roadmap
+- Executive summary
+- Recommended quick wins
+- Longer-term actions
+
+The paid audit must distinguish verified findings from self-reported answers.
+
+### 24.5 Campaign use
+
+The free assessment may be promoted through:
+
+- Search campaigns
+- Social advertising
+- Founder-focused content
+- Email
+- Workshops
+- Relevant articles
+- Partner referrals
+
+Campaign landing variants must preserve canonical and indexing rules.
+
+### 24.6 Tool security and privacy
+
+The tool must:
+
+- Validate all inputs
+- Avoid collecting sensitive legal, financial or security details
+- Avoid open file uploads in the free assessment
+- Apply rate limiting and bot controls
+- Prevent score manipulation from creating unsafe server behaviour
+- Avoid exposing proprietary scoring logic where that would enable abuse
+- Never present the result as legal, financial or cybersecurity certification
+- Avoid sending assessment answers into analytics platforms
+- Retain data only according to the approved policy
+
+### 24.7 Tool internal links
+
+The Health Check should receive links from:
+
+- Homepage
+- Services hub
+- Digital Presence Optimisation
+- Compliance
+- Media Buying
+- Content Creation
+- Relevant insights
+- Campaign landing pages
+
+The result experience may link to:
+
+- Relevant service pages
+- Relevant insights
+- Book a Call
+- Paid audit information
+
+## 25. Internal-linking system
 
 ### 24.1 Required link relationships
 
@@ -850,7 +1006,7 @@ No indexable page may be published without:
 - A content owner
 - A defined user purpose
 
-## 25. Content discovery and taxonomy
+## 26. Content discovery and taxonomy
 
 ### 25.1 Initial insight topics
 
@@ -887,7 +1043,7 @@ Filters may include:
 
 Filters should only be implemented when sufficient content exists. Empty or nearly empty filters should not appear at launch.
 
-## 26. Search and filtering flow
+## 27. Search and filtering flow
 
 Site search is optional for version 1.
 
@@ -911,7 +1067,7 @@ Search must exclude:
 - Personal enquiry data
 - Preview URLs
 
-## 27. Cross-device flow continuity
+## 28. Cross-device flow continuity
 
 Users must be able to complete all primary flows on mobile without switching devices.
 
@@ -927,9 +1083,9 @@ Required mobile behaviours:
 - Embedded booking experiences remain usable or open through an accessible alternative.
 - Tap-to-call and approved WhatsApp actions may be used where appropriate.
 
-## 28. States and recovery flows
+## 29. States and recovery flows
 
-### 28.1 Loading states
+### 29.1 Loading states
 
 Loading states must:
 
@@ -939,7 +1095,7 @@ Loading states must:
 - Avoid indefinite animation
 - Provide recovery if loading fails
 
-### 28.2 Empty states
+### 29.2 Empty states
 
 Required empty states may include:
 
@@ -950,7 +1106,7 @@ Required empty states may include:
 
 Each must explain what happened and provide a useful alternative.
 
-### 28.3 Error states
+### 29.3 Error states
 
 Error messages must:
 
@@ -961,7 +1117,7 @@ Error messages must:
 - Provide a retry or alternative
 - Be announced to assistive technology
 
-### 28.4 Not-found page
+### 29.4 Not-found page
 
 The not-found experience must:
 
@@ -971,7 +1127,7 @@ The not-found experience must:
 - Use a restrained brand expression
 - Return the correct HTTP status
 
-### 28.5 Submission failures
+### 29.5 Submission failures
 
 A failed submission must never display success.
 
@@ -982,7 +1138,7 @@ The user should receive:
 - An alternative contact route where appropriate
 - No duplicate submission caused by uncontrolled retry
 
-## 29. Analytics flow map
+## 30. Analytics flow map
 
 The following transitions must be measurable:
 
@@ -1007,7 +1163,7 @@ Analytics must not capture:
 - Sensitive personal data
 - Authentication credentials
 
-## 30. SEO flow requirements
+## 31. SEO flow requirements
 
 Search engines should be able to move through the site using:
 
@@ -1030,7 +1186,7 @@ The crawl path should prioritise:
 
 Campaign duplicates, previews, drafts, internal search results and administrative routes must not enter the index.
 
-## 31. Content-governance flow
+## 32. Content-governance flow
 
 ```mermaid
 flowchart TD
@@ -1057,7 +1213,7 @@ Legal or professional review is required when content includes:
 - Guarantees or performance claims
 - Intellectual-property claims
 
-## 32. Navigation and architecture acceptance criteria
+## 33. Navigation and architecture acceptance criteria
 
 The architecture is ready for implementation when:
 
@@ -1079,7 +1235,7 @@ The architecture is ready for implementation when:
 16. The architecture can support additional approved services without restructuring the whole platform.
 17. Stakeholder approval is recorded.
 
-## 33. Decisions required before UI design is finalised
+## 34. Decisions required before UI design is finalised
 
 The following decisions remain open:
 
@@ -1097,7 +1253,7 @@ The following decisions remain open:
 - Approved report samples
 - Final public status of LegalFlashcards9ja
 
-## 34. Immediate next steps
+## 35. Immediate next steps
 
 1. Review and approve this architecture.
 2. Create the Brand and Design System document.
@@ -1108,7 +1264,7 @@ The following decisions remain open:
 7. Create individual Stitch prompts beginning with the homepage.
 8. Validate the designed flows on mobile, tablet and desktop before engineering.
 
-## 35. Approval
+## 36. Approval
 
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
