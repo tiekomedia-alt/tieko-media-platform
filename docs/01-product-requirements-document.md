@@ -1351,7 +1351,8 @@ Version 1 will be considered ready for production only when:
 23. Error, empty, loading and success states are truthful and usable.
 24. The platform passes the approved browser and device matrix.
 25. The production deployment has backup, monitoring and recovery procedures.
-26. Stakeholder approval is recorded.
+26. The platform passes the Anti-AI-Slop Policy in TMP-02, including evidence checks for statistics, client logos, testimonials and FAQs.
+27. Stakeholder approval is recorded.
 
 ## 38. Required follow-up documents
 
