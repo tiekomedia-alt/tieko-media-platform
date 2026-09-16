@@ -1,7 +1,7 @@
 # Tieko Media Platform: Product Requirements Document
 
 **Document ID:** TMP-01  
-**Version:** 0.1  
+**Version:** 0.2  
 **Status:** Working draft  
 **Date:** 16 September 2026  
 **Owner:** Tieko Media Limited  
@@ -22,7 +22,7 @@ The Tieko Media platform will be a multi-page, search-led business website and p
 The platform must:
 
 - Explain Tieko Media’s positioning clearly
-- Present seven priority services
+- Present eight priority services
 - Generate qualified booked calls and enquiries
 - Present original digital products
 - Support paid intelligence-report commissioning
@@ -188,6 +188,7 @@ Primary journeys:
 - Media buying
 - Content creation
 - Press release services
+- Data and records management
 - Billboard advertising
 - Work
 - Book a call
@@ -344,6 +345,7 @@ The desktop and mobile navigation must provide access to:
 - /services/intelligence-reports
 - /services/billboard-advertising
 - /services/press-release-services
+/services/data-records-management
 
 #### Product pages
 
@@ -389,7 +391,7 @@ The homepage must:
 1. State Tieko Media’s positioning within the first viewport.
 2. Present Book a Call as the primary CTA.
 3. Introduce the four strategic capabilities.
-4. Present the seven priority services without overwhelming the visitor.
+4. Present the eight priority services without overwhelming the visitor.
 5. Feature selected work or case studies.
 6. Introduce products as evidence of building capability.
 7. Introduce paid intelligence reports.
@@ -406,7 +408,7 @@ The homepage must:
 The Services hub must:
 
 - Explain the Establish, Build, Amplify, Protect and Inform model
-- Present all seven launch services
+- Present all eight launch services
 - Help visitors choose a service based on their problem
 - Link to every service detail page
 - Provide cross-service pathways
@@ -545,6 +547,28 @@ The page must address:
 - Difference between earned, sponsored and paid placement
 - No guarantee of editorial acceptance or publication
 - Disclosure of third-party publication costs where applicable
+
+### 12.8 Data and Records Management page requirements
+
+The page must:
+
+- Position the service as records lifecycle management, digitisation, governance and authorised data discovery
+- Explain the difference between data management, records management, analytics and data mining
+- Describe supported clients such as law firms, professional practices, companies, public institutions, non-profits and archives
+- Present records retention schedule development
+- Present digitisation, document imaging, classification, indexing and metadata services
+- Present secure archiving and storage coordination
+- Present access-control, retrieval and information-handling workflow design
+- Present compliance readiness and audit support
+- Present secure document destruction coordination
+- Present operational workflow optimisation
+- Explain that insights are derived only from data the client is authorised to provide or process
+- Identify approved specialist partners where storage, scanning, hosting or destruction is subcontracted
+- State that no system can guarantee the prevention of every data leak
+- Avoid claiming cybersecurity certification unless separately scoped and evidenced
+- Include confidentiality, privacy, retention, cross-border transfer and incident-handling considerations
+- Link to Compliance, Intelligence Reports, Digital Presence Optimisation and relevant insights
+- Lead to Book a Call
 
 ## 13. Products requirements
 
@@ -1390,7 +1414,7 @@ Version 1 will be considered ready for production only when:
 8. Compliance enquiries use the approved professional boundary language.
 9. Confidential products do not appear publicly.
 10. Intelligence reports are identified as paid.
-11. Billboard Advertising and Press Release Services are represented accurately.
+11. Billboard Advertising, Press Release Services and Data and Records Management are represented accurately.
 12. Navigation works on mobile, tablet and desktop.
 13. Keyboard navigation and visible focus work across required pages.
 14. Reduced-motion preferences are respected.
@@ -1428,7 +1452,7 @@ This PRD must be supported by:
 1. Review and approve PRD version 0.1.
 2. Create the Website Architecture and User Flows document.
 3. Finalise the launch sitemap.
-4. Create page-level content briefs for the seven priority services.
+4. Create page-level content briefs for the eight priority services.
 5. Define the Brand and Design System.
 6. Establish technical options in the Technical Design Document.
 7. Create the data inventory and form data-flow diagrams.
