@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@theme {
+  --color-tieko-red: #E5252A;
+  --color-action-red: #B42318;
+  --color-deep-red: #7A1712;
+  --color-warm-ivory: #F4F0E7;
+  --color-soft-paper: #FAF8F3;
+  --color-pure-white: #FFFFFF;
+  --color-ink-black: #111111;
+  --color-charcoal: #252321;
+  --color-slate: #5F5B55;
+  --color-grid-grey: #D8D1C5;
+  --color-muted-sand: #C8BBA7;
+  --color-restrained-gold: #B1882B;
+  --color-dark-gold: #765A18;
+
+  --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--color-warm-ivory);
+  color: var(--color-ink-black);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+.home-intro-thread {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.hero-section {
+  min-height: min(46rem, calc(100svh - 4.5rem));
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.hero-layout {
+  min-height: calc(min(46rem, 100svh - 4.5rem) - clamp(5rem, 10vw, 9rem));
+}
+
+.problem-section {
+  min-height: 42rem;
+  padding-block: clamp(4.5rem, 7vw, 7rem);
+}
+
+.hero-section,
+.problem-section {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='2' seed='9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.028'/%3E%3C/svg%3E");
+}
+
+.problem-section > div {
+  z-index: 3;
+}
+
+.ami-thread {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ami-thread svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ami-ribbon-shadow {
+  filter: drop-shadow(0 6px 10px rgb(20 15 10 / 10%));
+}
+
+.ami-thread-mobile {
+  display: none !important;
+}
+
+@media (max-width: 63.99rem) {
+  .hero-section {
+    min-height: auto;
+    padding-block: 3rem 4rem;
+  }
+
+  .hero-layout {
+    min-height: auto;
+  }
+
+  .problem-section {
+    min-height: auto;
+    padding-block: 5rem 6rem;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .ami-thread-desktop {
+    display: none !important;
+  }
+
+  .ami-thread-mobile {
+    display: block !important;
+  }
+
+  .ami-ribbon-shadow {
+    filter: drop-shadow(3px 5px 4px rgb(37 35 33 / 11%));
+  }
+
+  .hero-section {
+    padding-block: 2.5rem 3.5rem;
+  }
+
+  .problem-section {
+    padding-block: 4.5rem 5rem;
+  }
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-action-red);
+  outline-offset: 2px;
+}
+
+/* Custom editorial selection */
+::selection {
+  background-color: #E5252A;
+  color: #FFFFFF;
+}
+
+/* Skip link styling */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  background-color: var(--color-action-red);
+  color: #FFFFFF;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}

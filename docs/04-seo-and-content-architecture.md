@@ -954,3 +954,10 @@ Competitor references inform category language and user expectations only. Tieko
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+## Approved future SEO architecture: Tieko Store
+
+The future Store index will live at `/store`, with canonical detail routes at `/store/[slug]`. Store implementation is deferred beyond Frontend Checkpoint 1.
+
+The content model must distinguish digital products, affiliate recommendations, product comparisons, paid intelligence reports and campaign landing pages so each format can receive appropriate titles, descriptions, canonical URLs, structured data and indexation controls. Campaign landing pages must default to an explicit indexation decision rather than being indexed automatically.
+
+Only live, verified offers may be indexable. Placeholder products, inactive affiliate links, fake reviews, fake scarcity and unsupported claims are prohibited. Affiliate and partner content must include clear, prominent disclosure language and must not imply independent endorsement where a commercial relationship exists.

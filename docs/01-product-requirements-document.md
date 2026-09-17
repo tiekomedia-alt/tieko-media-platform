@@ -1516,3 +1516,19 @@ It should convert the self-assessment into an evidence-based engagement with ver
 ### Originality requirement
 
 Tieko may learn from assessment products used by other organisations, but the questions, scoring logic, copy, dimensions, result bands and recommendations must be original to Tieko Media.
+## Approved future requirement: Tieko Store
+
+The website roadmap includes a future commerce and affiliate destination at `/store`, with individual product and offer pages at `/store/[slug]`. This capability is explicitly outside Frontend Checkpoint 1 and must not be released until its own product, content, legal and technical review is approved.
+
+The Store must be capable of supporting:
+
+- Tieko-owned digital products
+- Paid intelligence reports
+- Templates and downloadable resources
+- Clearly disclosed affiliate recommendations
+- Partner offers
+- Future educational products
+
+Five reusable, conversion-focused page formats are required: digital product, affiliate recommendation, product comparison, paid intelligence report and campaign landing page.
+
+Store content must never use placeholder products, fake reviews, fake scarcity, unsupported claims or inactive affiliate links. Affiliate relationships and commercial interests must be disclosed clearly at the point where they can influence a visitor's decision.

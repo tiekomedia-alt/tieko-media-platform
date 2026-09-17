@@ -1304,3 +1304,16 @@ The following decisions remain open:
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+## Approved future architecture: Tieko Store
+
+The future Store will use `/store` as its index route and `/store/[slug]` for individual products, reports, recommendations, comparisons, partner offers, educational products and campaign destinations. No Store routes are part of Frontend Checkpoint 1.
+
+The architecture must provide reusable page formats for:
+
+1. Digital product
+2. Affiliate recommendation
+3. Product comparison
+4. Paid intelligence report
+5. Campaign landing page
+
+Every format must provide a clear route back to the Store index, identify the offer owner or partner, disclose affiliate relationships where applicable and avoid dead purchase actions. Products or offers must remain unpublished until their destination, fulfilment path, claims and disclosures have been verified.

@@ -1281,3 +1281,18 @@ TMP-06 is ready for implementation when:
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+## Approved future data model: Tieko Store
+
+Store data is reserved for a later approved phase and is not implemented during Frontend Checkpoint 1. The future schema must represent Tieko-owned digital products, paid intelligence reports, templates and downloads, affiliate recommendations, partner offers and educational products.
+
+The content model must support these page-format values:
+
+- `digitalProduct`
+- `affiliateRecommendation`
+- `productComparison`
+- `paidIntelligenceReport`
+- `campaignLandingPage`
+
+Each publishable record must include a unique slug for `/store/[slug]`, title, summary, format, owner or partner, publication status, claims review status, disclosure status, availability state, canonical metadata and an active destination or fulfilment configuration. Affiliate records must identify the commercial relationship and disclosure copy. Comparison records must preserve selection criteria and review dates.
+
+Draft or incomplete records must not be publicly queryable. The schema must not support fabricated review totals, fake scarcity flags or unsupported claims. Expired and inactive destinations must automatically block or withdraw the associated call to action until revalidated.

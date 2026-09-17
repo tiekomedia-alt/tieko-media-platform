@@ -1450,3 +1450,10 @@ Implementation should follow current official guidance, including:
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+## Approved future technical capability: Tieko Store
+
+The technical roadmap reserves `/store` and `/store/[slug]` for a later approved commerce and affiliate phase. No Store route, checkout integration, affiliate redirect or product catalogue is included in Frontend Checkpoint 1.
+
+The future implementation must support five reusable templates: digital product, affiliate recommendation, product comparison, paid intelligence report and campaign landing page. Shared components should cover verified offer metadata, pricing presentation, disclosure notices, calls to action, fulfilment information and availability state without manufacturing urgency.
+
+Publishing validation must prevent incomplete offers from going live. At minimum, an offer requires an active destination or fulfilment path, approved claims, ownership or partner attribution, disclosure status, canonical route and publication status. External affiliate destinations must be validated and must use safe link attributes. Commerce, payment, tax, download fulfilment, access control and analytics providers require separate approval before implementation.
