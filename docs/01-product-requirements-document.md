@@ -408,7 +408,7 @@ The homepage must:
 The Services hub must:
 
 - Explain the Establish, Build, Amplify, Protect and Inform model
-- Present all eight launch services
+- Present all nine principal services according to their approved implementation phase
 - Help visitors choose a service based on their problem
 - Link to every service detail page
 - Provide cross-service pathways
@@ -1532,3 +1532,14 @@ The Store must be capable of supporting:
 Five reusable, conversion-focused page formats are required: digital product, affiliate recommendation, product comparison, paid intelligence report and campaign landing page.
 
 Store content must never use placeholder products, fake reviews, fake scarcity, unsupported claims or inactive affiliate links. Affiliate relationships and commercial interests must be disclosed clearly at the point where they can influence a visitor's decision.
+## Approved future service requirement: Business Automation & AI Systems
+
+The service inventory contains nine principal services. **Business Automation & AI Systems** is grouped under **Build foundations** and will use `/services/business-automation-ai-systems` when its later implementation phase is approved.
+
+The future service must cover workflow automation, customer-response automation, lead capture and follow-up, content-production workflows, reporting and operational dashboards, AI assistants and internal knowledge systems, integrations between business tools, and repetitive administrative-process automation. Frontend Checkpoint 1 must expose only the future navigation record and documentation requirement, not a service page.
+
+### Search sitelink support requirement
+
+The product architecture must make Services, Work, Intelligence, Insights, About, Store and Book a Call clear candidates for Google sitelinks. Each destination requires a unique indexable page, descriptive title and H1, stable internal links with consistent anchor text, logical hierarchy, XML sitemap inclusion where indexable, and breadcrumbs where the page is nested. Accurate `Organization` and `BreadcrumbList` structured data may be used where factually appropriate.
+
+Google alone determines sitelink display. The product must not promise sitelinks and must not add `SearchAction`, fake reviews, fabricated ratings or unsupported business information.

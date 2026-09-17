@@ -139,7 +139,7 @@ Relevant capabilities include:
 
 ## 6. Launch service portfolio
 
-The initial website launch will prioritise eight services.
+The approved service inventory contains nine principal services. Business Automation & AI Systems is reserved for a later implementation phase.
 
 ### 6.1 Media Buying
 
@@ -801,3 +801,12 @@ This document remains a working foundation until approved by the project lead.
 **Project lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+## Approved future service: Business Automation & AI Systems
+
+Business Automation & AI Systems is Tieko Media's ninth principal service and belongs to the **Build foundations** service group. Its canonical future route is `/services/business-automation-ai-systems`.
+
+The service scope includes workflow automation, customer-response automation, lead capture and follow-up, content-production workflows, reporting and operational dashboards, AI assistants and internal knowledge systems, integrations between business tools, and repetitive administrative-process automation.
+
+The service page and delivery capability are reserved for an appropriate later phase and are not part of Frontend Checkpoint 1.
+
+The information architecture should also encourage, but must never promise, Google sitelinks for Services, Work, Intelligence, Insights, About, Store and Book a Call through clear navigation, unique indexable pages, descriptive titles and H1 headings, strong internal linking, logical URL hierarchy, XML sitemaps, breadcrumbs, consistent anchor text, and accurate `Organization` and `BreadcrumbList` structured data where appropriate. Google controls whether sitelinks appear. `SearchAction`, fake reviews, fabricated ratings and unsupported business information are prohibited.

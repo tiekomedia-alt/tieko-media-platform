@@ -206,7 +206,7 @@ Desktop navigation:
 
 The Book a Call action should be distinct but not oversized.
 
-The Services control must accommodate eight services through a grouped dropdown or editorial mega menu:
+The Services control must accommodate nine principal services through a grouped dropdown or editorial mega menu:
 
 Build visibility:
 - Media Buying
@@ -220,6 +220,7 @@ Build authority:
 Build foundations:
 - Compliance
 - Data and Records Management
+- Business Automation & AI Systems
 
 Build intelligence:
 - Intelligence Reports
@@ -403,7 +404,7 @@ The homepage must:
 
 - Establish Tieko as an African digital intelligence and infrastructure company
 - Explain that Tieko is more than a media agency
-- Present eight services without overwhelming the visitor
+- Present nine principal services without overwhelming the visitor
 - Promote the Digital Business Health Check
 - Use TeamShuffle as product-building proof
 - Present intelligence reports as a paid capability
@@ -524,7 +525,7 @@ Related: Intelligence Reports, Digital Presence Optimisation, Data and Records M
 
 Use an editorial list, matrix or large numbered layout. Avoid four identical rounded icon cards.
 
-SECTION 5: EIGHT SERVICES
+SECTION 5: NINE PRINCIPAL SERVICES
 
 Eyebrow:
 What we do
@@ -535,7 +536,7 @@ Services built around how businesses actually grow.
 Introduction:
 You may need one focused service or a connected programme of work. We begin with the problem, identify what is missing and recommend a scope that makes commercial sense.
 
-Present all eight services:
+Present all nine principal services according to their approved implementation phase:
 
 Media Buying
 Plan and place advertising around a defined audience, campaign objective and measurement framework.
@@ -832,7 +833,7 @@ At 390 pixels:
 - Stack hero CTAs.
 - Simplify the Àmì Ribbon.
 - Present capabilities as a numbered vertical sequence.
-- Present all eight services clearly without a horizontal carousel.
+- Present all nine principal services clearly without a horizontal carousel.
 - Keep Health Check dimensions readable.
 - Place TeamShuffle after selected work.
 - Avoid very long centred paragraphs.
@@ -896,7 +897,7 @@ Do not rewrite or shorten approved copy without clearly flagging the proposed ch
 ### Content hierarchy
 
 - Can a visitor understand the four capabilities?
-- Are all eight services discoverable?
+- Are all nine principal services discoverable according to their approved implementation phase?
 - Is the Health Check prominent?
 - Does TeamShuffle feel like evidence?
 - Is Intelligence clearly paid and serious?
@@ -944,7 +945,7 @@ Replace repeated rounded cards with editorial lists, divided grids, numbered row
 
 ### If the page is too long
 
-Do not delete important content immediately. First combine the problem and capability sections, integrate TeamShuffle into selected work, and combine trust with insights. Preserve all eight services, the Health Check and the final CTA.
+Do not delete important content immediately. First combine the problem and capability sections, integrate TeamShuffle into selected work, and combine trust with insights. Preserve all nine principal services, the Health Check and the final CTA.
 
 ### If the page feels too corporate
 
@@ -977,3 +978,10 @@ No other page should establish a different visual language before the homepage d
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Ready for first Stitch generation
+## Approved future prompt requirement: Business Automation & AI Systems
+
+Treat **Business Automation & AI Systems** as Tieko Media's ninth principal service under **Build foundations**. Its reserved canonical route is `/services/business-automation-ai-systems`, but no page or homepage card may be generated during Frontend Checkpoint 1.
+
+Future prompts may cover workflow automation, customer-response automation, lead capture and follow-up, content-production workflows, reporting and operational dashboards, AI assistants and internal knowledge systems, integrations between business tools, and repetitive administrative-process automation.
+
+Future site-wide prompts must preserve clear, consistent navigation and internal links for Services, Work, Intelligence, Insights, About, Store and Book a Call, with unique indexable pages, descriptive titles and H1 headings, breadcrumbs and XML sitemap coverage. Describe this as support for search-engine understanding, never as a promise of Google sitelinks. Do not generate `SearchAction`, fake reviews, fabricated ratings or unsupported business information.

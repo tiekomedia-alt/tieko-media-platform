@@ -35,6 +35,7 @@ const serviceGroups: ServiceGroup[] = [
     items: [
       { title: "Compliance", href: "/services/compliance" },
       { title: "Data and Records Management", href: "/services/data-records-management" },
+      { title: "Business Automation & AI Systems", href: "/services/business-automation-ai-systems" },
     ],
   },
   {
@@ -136,15 +137,15 @@ export default function Header() {
           <div className="flex items-center shrink-0">
             <Link
               href="/"
-              className="relative block h-[59px] w-[112px] lg:h-[64px] lg:w-[122px] overflow-hidden focus-visible:outline-2 focus-visible:outline-action-red rounded-sm"
+              className="relative block h-[52px] w-[112px] lg:h-[56px] lg:w-[122px] focus-visible:outline-2 focus-visible:outline-action-red rounded-sm"
               aria-label="Tieko Media Homepage"
             >
               <Image
-                src="/brand/tieko-logo.png"
+                src="/brand/tieko-logo-header.png"
                 alt="Tieko Media"
-                width={500}
-                height={499}
-                className="absolute max-w-none w-[140px] lg:w-[152px] h-auto left-[-14px] lg:left-[-15px] top-[-41px] lg:top-[-44px]"
+                width={402}
+                height={211}
+                className="h-full w-full object-contain"
                 priority
               />
             </Link>

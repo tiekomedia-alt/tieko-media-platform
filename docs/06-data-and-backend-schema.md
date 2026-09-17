@@ -55,7 +55,7 @@ This is a logical schema. Exact TypeScript types, validation schemas, Firestore 
 | Data domain | System of record | Notes |
 |---|---|---|
 | Public pages and navigation | Sanity | Approved editorial content |
-| Services | Sanity | Eight service records |
+| Services | Sanity | Nine principal service records |
 | Articles and authors | Sanity | Publishing workflow |
 | Reports and public previews | Sanity | Full paid files remain protected elsewhere until approved |
 | Products and case studies | Sanity | Public portfolio content |
@@ -1188,7 +1188,7 @@ Detailed Sanity implementation remains in the CMS workstream, but the following 
 
 Sanity must not contain operational enquiry documents or assessment contact records.
 
-## 37. Data map for the eight services
+## 37. Data map for the nine principal services
 
 | Service | Public CMS content | Operational data |
 |---|---|---|
@@ -1296,3 +1296,17 @@ The content model must support these page-format values:
 Each publishable record must include a unique slug for `/store/[slug]`, title, summary, format, owner or partner, publication status, claims review status, disclosure status, availability state, canonical metadata and an active destination or fulfilment configuration. Affiliate records must identify the commercial relationship and disclosure copy. Comparison records must preserve selection criteria and review dates.
 
 Draft or incomplete records must not be publicly queryable. The schema must not support fabricated review totals, fake scarcity flags or unsupported claims. Expired and inactive destinations must automatically block or withdraw the associated call to action until revalidated.
+## Approved future service record: Business Automation & AI Systems
+
+Add a ninth principal service record with:
+
+- `name`: `Business Automation & AI Systems`
+- `slug`: `business-automation-ai-systems`
+- `route`: `/services/business-automation-ai-systems`
+- `serviceGroup`: `buildFoundations`
+- `implementationPhase`: a later approved phase
+- `checkpoint1PageEnabled`: `false`
+
+The service-scope fields must represent workflow automation, customer-response automation, lead capture and follow-up, content-production workflows, reporting and operational dashboards, AI assistants and internal knowledge systems, integrations between business tools, and repetitive administrative-process automation.
+
+Future SEO and structured-data fields must support an approved title, description, H1, canonical URL, breadcrumb label, internal-link anchors, sitemap state and factual `Service` schema inputs. The record must not contain fabricated ratings, reviews, claims or unsupported business data. `SearchAction` is not part of the schema.

@@ -396,7 +396,7 @@ Implementation requirements:
 - Prevent background scrolling while a modal menu is open.
 - Keep Book a Call prominent without using multiple competing buttons.
 
-The service menu must accommodate eight services without overcrowding.
+The service menu must accommodate nine principal services without overcrowding.
 
 ## 11. Content management system
 
@@ -1457,3 +1457,12 @@ The technical roadmap reserves `/store` and `/store/[slug]` for a later approved
 The future implementation must support five reusable templates: digital product, affiliate recommendation, product comparison, paid intelligence report and campaign landing page. Shared components should cover verified offer metadata, pricing presentation, disclosure notices, calls to action, fulfilment information and availability state without manufacturing urgency.
 
 Publishing validation must prevent incomplete offers from going live. At minimum, an offer requires an active destination or fulfilment path, approved claims, ownership or partner attribution, disclosure status, canonical route and publication status. External affiliate destinations must be validated and must use safe link attributes. Commerce, payment, tax, download fulfilment, access control and analytics providers require separate approval before implementation.
+## Approved future technical route: Business Automation & AI Systems
+
+Reserve `/services/business-automation-ai-systems` for a later approved phase. Frontend Checkpoint 1 must not create the route or service page.
+
+When implemented, the route must use the standard service-page architecture, canonical metadata, breadcrumb generation, XML sitemap inclusion, internal-link registration and structured-data pipeline. Structured-data inputs may produce `Service` and `BreadcrumbList` only from approved factual records, with the provider connected to the verified `Organization` entity.
+
+The future content and enquiry model must support workflow automation, customer-response automation, lead capture and follow-up, content-production workflows, reporting and operational dashboards, AI assistants and internal knowledge systems, integrations between business tools, and repetitive administrative-process automation.
+
+The route registry and sitemap generator must also preserve stable, crawlable destinations for Services, Work, Intelligence, Insights, About, Store and Book a Call. This supports search-engine understanding but does not guarantee Google sitelinks. Do not emit `SearchAction`, fabricated ratings, fake reviews or unsupported business facts.

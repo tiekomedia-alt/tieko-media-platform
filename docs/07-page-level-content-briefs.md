@@ -200,7 +200,7 @@ Present:
 
 Each capability should link to relevant services.
 
-### Section 4: Eight services
+### Section 4: Nine principal services
 
 Cards or editorial rows:
 
@@ -1006,3 +1006,35 @@ A page is ready for design when:
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+## Approved future brief: Business Automation & AI Systems
+
+**Route:** `/services/business-automation-ai-systems`
+
+**Service group:** Build foundations
+
+**Implementation:** Later approved phase, not Frontend Checkpoint 1
+
+**Primary audience:** Businesses and institutions with repetitive workflows, fragmented tools, slow customer response, inconsistent follow-up or knowledge trapped across teams and documents.
+
+**Primary topic:** Business automation and AI systems Nigeria
+
+### Proposition
+
+Tieko helps businesses connect tools, automate repetitive work and build practical AI-assisted systems that improve response, follow-up, content operations, reporting and internal access to knowledge.
+
+### Required scope
+
+- Workflow automation
+- Customer-response automation
+- Lead capture and follow-up
+- Content-production workflows
+- Reporting and operational dashboards
+- AI assistants and internal knowledge systems
+- Integrations between business tools
+- Repetitive administrative-process automation
+
+The future page must use approved, evidence-based claims and must not imply that automation eliminates human oversight or guarantees business results. It should link consistently to the Services hub and relevant foundation, intelligence and insight content.
+
+### Search architecture note
+
+Services, Work, Intelligence, Insights, About, Store and Book a Call require distinct indexable pages, descriptive titles and H1 headings, consistent anchor text and strong internal links. Breadcrumbs and XML sitemap inclusion should reflect the approved hierarchy. These measures do not guarantee Google sitelinks.

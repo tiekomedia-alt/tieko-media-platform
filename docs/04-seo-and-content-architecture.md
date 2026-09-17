@@ -37,7 +37,7 @@ SEO is not a separate marketing layer. It must be built into the information arc
 
 The programme has five commercial objectives:
 
-1. Generate qualified Book a Call enquiries for the eight launch services.
+1. Generate qualified Book a Call enquiries for the nine principal services as each enters its approved implementation phase.
 2. Build authority around digital intelligence and infrastructure for African businesses.
 3. Create demand for paid intelligence reports and commissioned research.
 4. Demonstrate product-building capability through TeamShuffle and approved future products.
@@ -81,7 +81,7 @@ The website should organise Tieko's breadth into four understandable capabilitie
 |---|---|---|
 | Build visibility | Reach the right audience and become easier to find | Media Buying, Digital Presence Optimisation, Billboard Advertising |
 | Build authority | Communicate consistently and credibly | Content Creation, Press Release Services |
-| Build foundations | Establish sound business, records and digital systems | Compliance, Data and Records Management, Digital Presence Optimisation |
+| Build foundations | Establish sound business, records, automation and digital systems | Compliance, Data and Records Management, Digital Presence Optimisation, Business Automation & AI Systems |
 | Build intelligence | Make better decisions with evidence | Intelligence Reports, research and analysis |
 
 This model should guide internal links and page introductions, but each service page must own a distinct search intent.
@@ -843,7 +843,7 @@ Rankings alone are not a business outcome.
 ### P0 before public launch
 
 - Homepage metadata and organisation entity
-- Services hub and eight service-page briefs
+- Services hub and nine service-page briefs
 - Digital Business Health Check brief
 - Book a Call conversion tracking
 - About, Contact and legal pages
@@ -943,7 +943,7 @@ Competitor references inform category language and user expectations only. Tieko
 1. Confirm the Google Business Profile URL and current review count.
 2. Validate the working topic set with live keyword data.
 3. Approve the first six editorial briefs.
-4. Write page-level content briefs for the homepage and eight services.
+4. Write page-level content briefs for the homepage and nine principal services.
 5. Add technical SEO requirements to the TDD.
 6. Create the Data and Backend Schema document.
 7. Create the Stitch master prompt after content hierarchy is approved.
@@ -961,3 +961,19 @@ The future Store index will live at `/store`, with canonical detail routes at `/
 The content model must distinguish digital products, affiliate recommendations, product comparisons, paid intelligence reports and campaign landing pages so each format can receive appropriate titles, descriptions, canonical URLs, structured data and indexation controls. Campaign landing pages must default to an explicit indexation decision rather than being indexed automatically.
 
 Only live, verified offers may be indexable. Placeholder products, inactive affiliate links, fake reviews, fake scarcity and unsupported claims are prohibited. Affiliate and partner content must include clear, prominent disclosure language and must not imply independent endorsement where a commercial relationship exists.
+## Approved future SEO target: Business Automation & AI Systems
+
+Reserve `/services/business-automation-ai-systems` for the ninth principal service under **Build foundations**.
+
+- Primary topic: business automation and AI systems Nigeria
+- Supporting topics: workflow automation, customer-response automation, lead follow-up automation, content-production workflows, operational dashboards, AI assistants, internal knowledge systems, business-tool integrations, administrative-process automation
+- Search intent: commercial and solution research
+- Future primary action: discuss an automation system
+
+The page must receive a unique descriptive title, H1, canonical URL, service-specific internal links, breadcrumb trail and inclusion in the service XML sitemap when approved and indexable. Appropriate structured-data inputs are `Service` and `BreadcrumbList`, with provider details connected to the verified `Organization` entity.
+
+### Google sitelink support
+
+Use consistent navigation and anchor text for Services, Work, Intelligence, Insights, About, Store and Book a Call. Each must have a unique indexable destination, descriptive title and H1, strong internal links, logical hierarchy, appropriate breadcrumb support and XML sitemap coverage.
+
+These measures help Google understand the site but cannot guarantee sitelinks. Google controls their appearance. Do not add `SearchAction`, self-serving review markup, fabricated ratings or unsupported organisation details.

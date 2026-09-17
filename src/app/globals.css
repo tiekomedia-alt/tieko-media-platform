@@ -96,7 +96,7 @@ body {
 }
 
 .ami-ribbon-shadow {
-  filter: drop-shadow(0 6px 10px rgb(20 15 10 / 10%));
+  filter: drop-shadow(0 5px 8px rgb(20 15 10 / 9%));
 }
 
 .ami-thread-mobile {
@@ -129,7 +129,7 @@ body {
   }
 
   .ami-ribbon-shadow {
-    filter: drop-shadow(3px 5px 4px rgb(37 35 33 / 11%));
+    filter: drop-shadow(2px 4px 5px rgb(37 35 33 / 8%));
   }
 
   .hero-section {

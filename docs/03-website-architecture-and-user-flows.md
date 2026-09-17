@@ -38,7 +38,7 @@ The architecture must:
 
 1. Make Tieko Media’s positioning understandable within seconds.
 2. Allow visitors to enter through any important page without becoming disoriented.
-3. Keep the eight launch services easy to discover.
+3. Keep the nine principal services easy to discover according to their approved implementation phase.
 4. Prevent the navigation from becoming crowded.
 5. Connect services, insights, products, reports and case studies.
 6. Make Book a Call continuously available without becoming intrusive.
@@ -95,7 +95,7 @@ Book a Call must be visually distinct as the primary action.
 
 ### 4.2 Services menu
 
-The Services menu should expose the eight launch services without placing all eight items directly in the navigation bar.
+The Services menu should expose the nine principal services without placing all nine items directly in the navigation bar.
 
 Recommended menu structure:
 
@@ -357,7 +357,7 @@ Recommended homepage sequence:
 3. Primary Book a Call and secondary Explore Our Services CTA
 4. Short proof or credibility strip
 5. Four-capability model
-6. Eight launch services
+6. Nine principal services
 7. Selected case studies
 8. Product-building proof
 9. Intelligence-report feature
@@ -1007,7 +1007,7 @@ The result experience may link to:
 | Source | Must link to |
 |---|---|
 | Homepage | Major hubs, selected services, products, work, intelligence and insights |
-| Services hub | All eight launch services |
+| Services hub | All nine principal services |
 | Service page | Related services, proof, insights, Book a Call |
 | Product hub | All approved public products |
 | Product page | Live product, related work, relevant capability |
@@ -1317,3 +1317,14 @@ The architecture must provide reusable page formats for:
 5. Campaign landing page
 
 Every format must provide a clear route back to the Store index, identify the offer owner or partner, disclose affiliate relationships where applicable and avoid dead purchase actions. Products or offers must remain unpublished until their destination, fulfilment path, claims and disclosures have been verified.
+## Approved future route and navigation addition
+
+Add **Business Automation & AI Systems** to the **Build foundations** group with canonical route `/services/business-automation-ai-systems`. The route is reserved for a later approved phase and must not be implemented during Frontend Checkpoint 1.
+
+Its scope is workflow automation, customer-response automation, lead capture and follow-up, content-production workflows, reporting and operational dashboards, AI assistants and internal knowledge systems, integrations between business tools, and repetitive administrative-process automation.
+
+### Sitelink-supporting hierarchy
+
+The permanent navigation and internal-link architecture should consistently expose these destinations: Services, Work, Intelligence, Insights, About, Store and Book a Call. Each destination must resolve to a distinct, indexable canonical page when launched. Nested pages should link through breadcrumbs, service and content pages should link back to their hubs, and XML sitemaps must reflect the approved hierarchy.
+
+This architecture is intended to help search engines understand the site. It does not guarantee Google sitelinks, which remain under Google's control. Do not implement `SearchAction` structured data.

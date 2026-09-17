@@ -82,6 +82,7 @@ African digital intelligence and infrastructure company
 
 - Compliance
 - Data and Records Management
+- Business Automation & AI Systems
 
 #### Build intelligence
 
@@ -796,7 +797,7 @@ On small screens:
 5. Explore Our Services
 6. Problem statement
 7. Four capabilities
-8. Eight services
+8. Nine principal services
 9. Health Check
 10. Selected work
 11. TeamShuffle
@@ -812,7 +813,7 @@ Requirements:
 - Keep the primary CTA visible without a permanent obstructive bottom bar.
 - Use a compact sticky header.
 - Avoid horizontal service carousels that hide content.
-- Do not reduce eight services to unlabeled icons.
+- Do not reduce nine principal services to unlabeled icons.
 - Keep body copy readable.
 - Simplify Àmì Ribbon assets.
 - Avoid excessive animation.
@@ -860,7 +861,7 @@ Do not attach personal data to events.
 The homepage is ready for Stitch when:
 
 1. The H1 is approved.
-2. The eight services are correctly represented.
+2. The nine principal services are correctly represented according to their approved implementation phase.
 3. Compliance provider language is approved.
 4. Data and Records Management language is approved.
 5. TeamShuffle is approved as public product proof.
@@ -898,3 +899,10 @@ Stitch must design around the approved content. It must not rewrite the strategy
 **Product lead:** David Oluwadamilola Vanteko  
 **Organisation:** Tieko Media Limited  
 **Approval status:** Pending review
+### Approved future homepage service addition
+
+When the later service phase is approved, add **Business Automation & AI Systems** as the ninth principal service under **Build foundations**, linking to `/services/business-automation-ai-systems`.
+
+The homepage presentation should describe practical workflow automation, customer response and follow-up, content-production systems, dashboards, AI assistants, knowledge systems, tool integrations and repetitive administrative-process automation. Do not publish the service card or link during Frontend Checkpoint 1.
+
+Use the same canonical service name and anchor text wherever the service appears. The homepage and permanent navigation should maintain clear links to Services, Work, Intelligence, Insights, About, Store and Book a Call to support search-engine understanding without promising Google sitelinks. Do not add `SearchAction`, fake reviews, fabricated ratings or unsupported business claims.
