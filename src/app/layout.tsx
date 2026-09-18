@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Build a Business People Can Find, Trust and Choose | Tieko Media",
     description:
-      "From media and content to compliance coordination, business intelligence, digital optimisation and records management, Tieko builds the systems behind credible growth.",
+      "From media and content to compliance coordination, business intelligence, digital optimisation and records management, Tieko Media builds the systems behind credible growth.",
     url: "/",
     siteName: "Tieko Media",
     locale: "en_GB",
