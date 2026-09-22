@@ -1,67 +1,55 @@
 import Link from "next/link";
-import { capabilityGroups } from "@/lib/home-services";
-import ChapterMarker from "@/components/home/ChapterMarker";
+
+const liveServices = [
+  {
+    number: "01",
+    title: "Compliance and Institutional Support",
+    description:
+      "Application coordination, document preparation and professional referrals for important Nigerian business processes.",
+    href: "/services/compliance",
+  },
+  {
+    number: "02",
+    title: "Content Creation",
+    description:
+      "Strategy, copy, design, video and distribution planning built around a repeatable content system.",
+    href: "/services/content-creation",
+  },
+  {
+    number: "03",
+    title: "Media Services",
+    description:
+      "Connected advertising, landing pages and follow-up pathways that give interested visitors a clear next action.",
+    href: "/mediaservices",
+  },
+];
 
 export default function ServicesIndex() {
   return (
     <section className="services-index" aria-labelledby="services-heading">
       <div className="section-shell">
-        <ChapterMarker number="03" />
         <div className="services-intro">
-          <p className="section-eyebrow">What we do</p>
+          <p className="section-eyebrow">Selected capabilities</p>
           <div>
-            <h2 id="services-heading">Services built around how businesses actually grow.</h2>
-            <p>You may need one focused service or a connected programme of work. We begin with the problem, identify what is missing and recommend a scope that makes commercial sense.</p>
+            <h2 id="services-heading">Start with the business problem, not an isolated deliverable.</h2>
+            <p>These completed service pages explain the work, process and next step. Additional Tieko Media capabilities will be added as their content and visuals are approved.</p>
           </div>
         </div>
 
-        <div className="service-groups">
-          {capabilityGroups.map((group, groupIndex) => {
-            const serviceOffset = capabilityGroups
-              .slice(0, groupIndex)
-              .reduce((total, currentGroup) => total + currentGroup.services.length, 0);
-
-            return (
-            <section className="service-group-chapter" key={group.id} aria-labelledby={`service-group-${group.id}`}>
-              <header>
-                <span>{String(groupIndex + 1).padStart(2, "0")}</span>
-                <h3 id={`service-group-${group.id}`}>{group.title}</h3>
-              </header>
-              <ol>
-                {group.services.map((service, serviceIndex) => {
-                  const serviceNumber = serviceOffset + serviceIndex + 1;
-                  return (
-                    <li key={service.name}>
-                      <Link href={service.href} aria-label={service.linkLabel}>
-                        <span className="service-number">{String(serviceNumber).padStart(2, "0")}</span>
-                        <span className="service-content">
-                          <strong>{service.name}</strong>
-                          <span>{service.description}</span>
-                        </span>
-                        <span className="service-arrow" aria-hidden="true">→</span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ol>
-            </section>
-            );
-          })}
+        <div className="home-service-card-grid">
+          {liveServices.map((service) => (
+            <article key={service.number}>
+              <span>{service.number}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <Link href={service.href}>Explore service <span aria-hidden="true">→</span></Link>
+            </article>
+          ))}
         </div>
 
-        <aside className="service-guidance" aria-labelledby="service-guidance-heading">
-          <div>
-            <p className="section-eyebrow">Service guidance</p>
-            <h3 id="service-guidance-heading">Not sure which service fits the problem?</h3>
-          </div>
-          <div>
-            <p>Tell us what is happening in your business. We will help you identify the immediate need, the dependencies around it and the most sensible next step.</p>
-            <Link href="/book-a-call">Book a Call</Link>
-          </div>
-        </aside>
-
-        <div className="health-check-transition">
-          <ChapterMarker number="04" />
+        <div className="home-services-footer">
+          <Link href="/services">View all available services</Link>
+          <Link href="/book-a-call">Book a Call</Link>
         </div>
       </div>
     </section>

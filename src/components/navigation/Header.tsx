@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface ServiceItem {
   title: string;
@@ -16,37 +17,23 @@ interface ServiceGroup {
 
 const serviceGroups: ServiceGroup[] = [
   {
-    category: "Build visibility",
+    category: "Visibility and authority",
     items: [
-      { title: "Media Buying", href: "/services/media-buying" },
-      { title: "Digital Presence Optimisation", href: "/services/digital-presence-optimisation" },
-      { title: "Billboard Advertising", href: "/services/billboard-advertising" },
-    ],
-  },
-  {
-    category: "Build authority",
-    items: [
+      { title: "Media Services", href: "/mediaservices" },
       { title: "Content Creation", href: "/services/content-creation" },
-      { title: "Press Release Services", href: "/services/press-release-services" },
     ],
   },
   {
     category: "Build foundations",
     items: [
-      { title: "Compliance", href: "/services/compliance" },
-      { title: "Data and Records Management", href: "/services/data-records-management" },
-      { title: "Business Automation & AI Systems", href: "/services/business-automation-ai-systems" },
-    ],
-  },
-  {
-    category: "Build intelligence",
-    items: [
-      { title: "Intelligence Reports", href: "/services/intelligence-reports" },
+      { title: "Compliance and Institutional Support", href: "/services/compliance" },
     ],
   },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const workActive = pathname === "/work" || pathname.startsWith("/work/");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
@@ -192,6 +179,14 @@ export default function Header() {
                   aria-label="Services Submenu"
                   className="absolute left-0 top-full mt-2 w-[520px] bg-soft-paper border border-grid-grey p-5 shadow-lg rounded-sm grid grid-cols-2 gap-5 z-50 text-left"
                 >
+                  <Link
+                    href="/services"
+                    role="menuitem"
+                    className="col-span-2 flex items-center justify-between border-b border-grid-grey pb-3 text-[0.875rem] font-bold text-action-red"
+                    onClick={() => setServicesDropdownOpen(false)}
+                  >
+                    View all services <span aria-hidden="true">→</span>
+                  </Link>
                   {serviceGroups.map((group) => (
                     <div key={group.category} className="space-y-2">
                       <p className="text-[0.6875rem] font-bold uppercase tracking-widest text-slate">
@@ -221,31 +216,12 @@ export default function Header() {
 
             <Link
               href="/work"
-              className="py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors"
+              aria-current={workActive ? "page" : undefined}
+              className={`py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors ${workActive ? "text-action-red" : ""}`}
             >
               Work
             </Link>
 
-            <Link
-              href="/intelligence"
-              className="py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors"
-            >
-              Intelligence
-            </Link>
-
-            <Link
-              href="/insights"
-              className="py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors"
-            >
-              Insights
-            </Link>
-
-            <Link
-              href="/about"
-              className="py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors"
-            >
-              About
-            </Link>
           </nav>
 
           {/* Primary CTA & Mobile Controls */}
@@ -344,6 +320,13 @@ export default function Header() {
 
                 {mobileServicesOpen && (
                   <div className="pl-3 mt-2 space-y-4 border-l-2 border-grid-grey">
+                    <Link
+                      href="/services"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block text-[0.9375rem] font-bold text-action-red py-1"
+                    >
+                      View all services →
+                    </Link>
                     {serviceGroups.map((group) => (
                       <div key={group.category} className="space-y-1.5">
                         <span className="text-[0.6875rem] font-bold uppercase tracking-widest text-slate">
@@ -369,41 +352,13 @@ export default function Header() {
                 <Link
                   href="/work"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight text-ink-black hover:text-action-red"
+                  aria-current={workActive ? "page" : undefined}
+                  className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${workActive ? "text-action-red" : "text-ink-black"}`}
                 >
                   Work
                 </Link>
               </div>
 
-              <div>
-                <Link
-                  href="/intelligence"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight text-ink-black hover:text-action-red"
-                >
-                  Intelligence
-                </Link>
-              </div>
-
-              <div>
-                <Link
-                  href="/insights"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight text-ink-black hover:text-action-red"
-                >
-                  Insights
-                </Link>
-              </div>
-
-              <div>
-                <Link
-                  href="/about"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight text-ink-black hover:text-action-red"
-                >
-                  About
-                </Link>
-              </div>
             </nav>
           </div>
 

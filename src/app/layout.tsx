@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -23,13 +24,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Tieko Media | Digital Intelligence and Infrastructure",
+  title: {
+    default: "Tieko Media | Business Services, Media and Digital Systems",
+    template: "%s | Tieko Media",
+  },
   description:
     "Tieko Media helps African businesses build stronger foundations, improve visibility, create useful content, manage information and make better decisions. Book a call.",
-  metadataBase: new URL("https://tiekomedia.com"),
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Build a Business People Can Find, Trust and Choose | Tieko Media",
     description:
@@ -39,10 +40,9 @@ export const metadata: Metadata = {
     locale: "en_GB",
     type: "website",
   },
-  icons: {
-    icon: "/brand/tieko-logo-trimmed.png",
-    apple: "/brand/tieko-logo-trimmed.png",
-  },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({
@@ -50,12 +50,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organisationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LocalBusiness"],
+    name: "Tieko Media",
+    legalName: "Tieko Media Limited",
+    url: SITE_URL,
+    logo: `${SITE_URL}/brand/tieko-logo.png`,
+    image: `${SITE_URL}/opengraph-image`,
+    telephone: "+2349038198689",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "13b Samuel Awoniyi, off Salvation Road, Opebi",
+      addressLocality: "Ikeja",
+      addressRegion: "Lagos",
+      postalCode: "100212",
+      addressCountry: "NG",
+    },
+    description:
+      "Tieko Media provides business-foundation, media, content and digital-system services for organisations in Nigeria and international markets.",
+  };
+
   return (
     <html
       lang="en-GB"
       className={`${barlowCondensed.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-warm-ivory text-ink-black selection:bg-tieko-red selection:text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organisationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

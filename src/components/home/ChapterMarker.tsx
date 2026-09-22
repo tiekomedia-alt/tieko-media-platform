@@ -1,5 +1,5 @@
 type ChapterMarkerProps = {
-  number: "01" | "02" | "03" | "04";
+  number: "01" | "02" | "03" | "04" | "05" | "06";
   tone?: "light" | "dark";
 };
 
