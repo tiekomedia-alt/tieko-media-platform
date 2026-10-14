@@ -12,7 +12,7 @@ const serviceCategories = [
     summary:
       "Structured support for Nigerian founders, foreign participants and established organisations handling incorporation or post-incorporation filings.",
     tieko:
-      "Tieko Media organises the intake, prepares a tailored document checklist, coordinates information gathering, supports portal administration and tracks the application or filing.",
+      "We organise the intake, prepare a tailored document checklist, coordinate information gathering, support portal administration and track the application or filing.",
     external:
       "The Corporate Affairs Commission controls registration, queries, statutory fees, records and approval. Independent legal advisers are involved where legal drafting, opinions or regulated representation are required.",
   },
@@ -22,7 +22,7 @@ const serviceCategories = [
     summary:
       "Preparation and coordination for businesses registering as exporters or organising documents for a relevant export-facing application.",
     tieko:
-      "Tieko Media checks the stated business objective, maps the required records, organises corporate documents and coordinates the submission pathway.",
+      "We check the stated business objective, map the required records, organise corporate documents and coordinate the submission pathway.",
     external:
       "The Nigerian Export Promotion Council issues exporter certificates. Product, sector or destination-specific permits may involve other authorities, and each institution controls its own requirements and decision.",
   },
@@ -32,7 +32,7 @@ const serviceCategories = [
     summary:
       "Administrative support for businesses preparing to protect a name, mark or other brand asset in Nigeria.",
     tieko:
-      "Tieko Media captures the mark and ownership information, organises the brief, coordinates preliminary checks and keeps the application record moving.",
+      "We capture the mark and ownership information, organise the brief, coordinate preliminary checks and keep the application record moving.",
     external:
       "The Trademarks Registry controls examination, publication, objections and registration. A qualified intellectual-property professional is engaged where legal advice, representation or a formal opinion is needed.",
   },
@@ -42,7 +42,7 @@ const serviceCategories = [
     summary:
       "Practical readiness and coordination for organisations assessing registration and data-protection obligations under Nigeria's data-protection framework.",
     tieko:
-      "Tieko Media helps organise processing information, responsible contacts, records and the administrative material needed for an appropriate compliance pathway.",
+      "We help organise processing information, responsible contacts, records and the administrative material needed for an appropriate compliance pathway.",
     external:
       "The Nigeria Data Protection Commission determines registration and regulatory outcomes. Audit, verification and regulated DPCO work must be performed by an appropriately licensed Data Protection Compliance Organisation where required.",
   },
@@ -52,7 +52,7 @@ const serviceCategories = [
     summary:
       "Administrative coordination for businesses organising tax records, registrations and annual compliance work without losing visibility of the process.",
     tieko:
-      "Tieko Media gathers the business context, organises available records, manages the information checklist and coordinates communication with a suitable external professional.",
+      "We gather the business context, organise available records, manage the information checklist and coordinate communication with a suitable external professional.",
     external:
       "Tax advice, audit opinions, signed accounts and professional filings are handled by appropriately qualified accountants, auditors or tax advisers. The relevant revenue authority controls registration, assessment and acceptance.",
   },
@@ -62,9 +62,9 @@ const serviceCategories = [
     summary:
       "Application coordination for businesses preparing corporate securities or other institutional onboarding records.",
     tieko:
-      "Tieko Media helps define the intended account pathway, assembles corporate and KYC records, coordinates responses and keeps an application checklist visible to the business.",
+      "We help define the intended account pathway, assemble corporate and KYC records, coordinate responses and keep an application checklist visible to you.",
     external:
-      "A stockbroker, custodian, CSCS or another relevant institution controls eligibility, account opening, identifiers, fees and timelines. Tieko Media does not provide investment advice or guarantee account approval.",
+      "A stockbroker, custodian, CSCS or another relevant institution controls eligibility, account opening, identifiers, fees and timelines. We do not provide investment advice or guarantee account approval.",
   },
 ];
 
@@ -77,9 +77,9 @@ const audiences = [
 
 const process = [
   ["01", "Introductory call", "We clarify the business objective, current status and institution involved."],
-  ["02", "Scope assessment", "Tieko Media identifies the administrative work, dependencies and any professional input required."],
+  ["02", "Scope assessment", "We identify the administrative work, dependencies and any professional input required."],
   ["03", "Document preparation", "We provide a tailored checklist, organise supplied records and identify missing information."],
-  ["04", "Submission or coordination", "Tieko Media handles the agreed administration and coordinates with the institution or external professional."],
+  ["04", "Submission or coordination", "We handle the agreed administration and coordinate with the institution or external professional."],
   ["05", "Follow-up and handover", "We track responses, organise queries and hand over the available records when the scoped work is complete."],
 ];
 
@@ -90,12 +90,12 @@ const workExamples = [
 ];
 
 const faqs = [
-  ["Which documents will I need?", "The list depends on the entity, institution and application. After the introductory call, Tieko Media prepares a scoped checklist rather than using one generic document list."],
+  ["Which documents will I need?", "The list depends on the entity, institution and application. After the introductory call, we prepare a scoped checklist rather than using one generic document list."],
   ["Are government and professional fees included?", "No fee should be assumed to be included unless it appears in the written scope. Statutory charges, professional fees, searches, publications, certifications and third-party costs are identified separately where known."],
-  ["Can Tieko Media guarantee approval?", "No. Tieko Media can improve organisation, readiness and follow-up, but an authority, professional firm, broker, custodian or other institution controls its own decision and timeline."],
-  ["Does Tieko Media provide legal, tax or investment advice?", "Tieko Media provides business administration and coordination within the agreed scope. Regulated legal, audit, tax, data-protection or investment work is referred to an appropriately qualified or licensed professional where required."],
-  ["How long will the process take?", "Timing depends on document readiness, the selected service and the external institution. Tieko Media will explain known dependencies but will not promise a fixed approval date controlled by another organisation."],
-  ["What happens after the introductory call?", "If the service is a suitable fit, you receive a proposed scope covering Tieko Media's work, external dependencies, expected inputs, fees and the next practical action."],
+  ["Can you guarantee approval?", "No. We can improve organisation, readiness and follow-up, but an authority, professional firm, broker, custodian or other institution controls its own decision and timeline."],
+  ["Do you provide legal, tax or investment advice?", "We provide business administration and coordination within the agreed scope. Regulated legal, audit, tax, data-protection or investment work is referred to an appropriately qualified or licensed professional where required."],
+  ["How long will the process take?", "Timing depends on document readiness, the selected service and the external institution. We will explain known dependencies but will not promise a fixed approval date controlled by another organisation."],
+  ["What happens after the introductory call?", "If the service is a suitable fit, you receive a proposed scope covering our work, external dependencies, expected inputs, fees and the next practical action."],
 ];
 
 function Arrow() {
@@ -103,29 +103,8 @@ function Arrow() {
 }
 
 export default function ComplianceInstitutionalLanding() {
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://tiekomedia.com" },
-      { "@type": "ListItem", position: 2, name: "Services", item: "https://tiekomedia.com/services" },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Compliance and Institutional Support",
-        item: "https://tiekomedia.com/services/compliance",
-      },
-    ],
-  };
-
   return (
     <div className="compliance-page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
       <Header />
       <main id="main-content">
         <section className="compliance-hero" aria-labelledby="compliance-title">
@@ -138,10 +117,10 @@ export default function ComplianceInstitutionalLanding() {
               <p className="compliance-kicker">Compliance and institutional support</p>
               <h1 id="compliance-title">Move important business applications forward with clearer coordination.</h1>
               <p className="compliance-lead">
-                Tieko Media helps founders, businesses and organisations organise documents, coordinate applications and manage the administrative work around Nigerian corporate, export, trademark, data-protection, tax and institutional processes.
+              We help founders, businesses and organisations organise documents, coordinate applications and manage the administrative work around Nigerian corporate, export, trademark, data-protection, tax and institutional processes.
               </p>
               <div className="compliance-actions">
-                <Link href={bookingHref} className="compliance-primary">Book a Call <Arrow /></Link>
+              <Link href={bookingHref} className="compliance-primary">Book a call <Arrow /></Link>
                 <a href="#services">Explore the services</a>
               </div>
               <p className="compliance-boundary">
@@ -150,10 +129,10 @@ export default function ComplianceInstitutionalLanding() {
             </div>
             <figure className="compliance-hero-visual">
               <Image
-                src="/images/services/compliance-institutional-support.png"
+                src="/images/services/compliance-institutional-support.webp"
                 alt="Illustrative organised workspace with folders and documents overlooking Lagos"
-                width={1680}
-                height={945}
+                width={1672}
+                height={941}
                 priority
                 sizes="(max-width: 1024px) 100vw, 46vw"
               />
@@ -168,7 +147,7 @@ export default function ComplianceInstitutionalLanding() {
             <div>
               <h2 id="compliance-intro-title">The form may be online. The process can still be overwhelming.</h2>
               <p>Important applications often involve several records, decision-makers and external portals. Missing information, unclear ownership and untracked queries can slow the business down.</p>
-              <p>Tieko Media creates one visible working process around the application. We clarify what is needed, organise what the business controls and coordinate the next step without pretending to control the institution.</p>
+            <p>We create one visible working process around the application, clarify what is needed, organise what you control and coordinate the next step without pretending to control the institution.</p>
             </div>
           </div>
         </section>
@@ -185,12 +164,11 @@ export default function ComplianceInstitutionalLanding() {
             <div className="compliance-service-list">
               {serviceCategories.map((service) => (
                 <article key={service.number}>
-                  <div className="compliance-service-number">{service.number}</div>
                   <div className="compliance-service-copy">
                     <h3>{service.title}</h3>
                     <p>{service.summary}</p>
                     <div className="compliance-responsibility-grid">
-                      <div><strong>Tieko Media handles</strong><p>{service.tieko}</p></div>
+                    <div><strong>We handle</strong><p>{service.tieko}</p></div>
                       <div><strong>External responsibility</strong><p>{service.external}</p></div>
                     </div>
                   </div>
@@ -207,12 +185,11 @@ export default function ComplianceInstitutionalLanding() {
                 <p className="compliance-kicker">Who it is for</p>
                 <h2 id="compliance-audience-title">For organisations that need the work organised and followed through.</h2>
               </div>
-              <Link href={bookingHref}>Book a Call <Arrow /></Link>
+                <Link href={bookingHref}>Book a call <Arrow /></Link>
             </div>
             <div className="compliance-audience-grid">
-              {audiences.map(([title, copy], index) => (
+              {audiences.map(([title, copy]) => (
                 <article key={title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
                   <h3>{title}</h3>
                   <p>{copy}</p>
                 </article>
@@ -228,11 +205,11 @@ export default function ComplianceInstitutionalLanding() {
                 <p className="compliance-kicker">The process</p>
                 <h2 id="compliance-process-title">One accountable pathway from question to handover.</h2>
               </div>
-              <p>We separate the work Tieko Media can manage from the decisions, professional opinions and timelines controlled elsewhere.</p>
+          <p>We separate the work we can manage from the decisions, professional opinions and timelines controlled elsewhere.</p>
             </div>
             <ol className="compliance-process-list">
-              {process.map(([number, title, copy]) => (
-                <li key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></li>
+              {process.map(([, title, copy]) => (
+                <li key={title}><h3>{title}</h3><p>{copy}</p></li>
               ))}
             </ol>
           </div>
@@ -247,8 +224,8 @@ export default function ComplianceInstitutionalLanding() {
               <Link href="/work">View selected work <Arrow /></Link>
             </div>
             <div className="compliance-evidence-list">
-              {workExamples.map(([name, scope], index) => (
-                <article key={name}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{name}</h3><p>{scope}</p></div></article>
+              {workExamples.map(([name, scope]) => (
+                <article key={name}><div><h3>{name}</h3><p>{scope}</p></div></article>
               ))}
             </div>
           </div>
@@ -289,7 +266,7 @@ export default function ComplianceInstitutionalLanding() {
             <p className="compliance-kicker">Start with the actual requirement</p>
             <h2 id="compliance-final-title">Tell us what you need to complete.</h2>
             <p>We will help you identify the administrative scope, external dependencies and next practical step.</p>
-            <Link href={bookingHref}>Book a Call <Arrow /></Link>
+            <Link href={bookingHref}>Book a call <Arrow /></Link>
           </div>
         </section>
       </main>

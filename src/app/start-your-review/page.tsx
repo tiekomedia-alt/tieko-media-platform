@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/navigation/Header";
 import ReviewForm from "@/components/forms/ReviewForm";
 
@@ -23,9 +24,21 @@ export default async function StartYourReviewPage({ searchParams }: PageProps<"/
               <p className="funnel-kicker">Free starting-point review</p>
               <h1>Tell us what you are trying to solve.</h1>
             </div>
-            <p>
-              This short onboarding form helps us understand your goal before a call. It takes about three minutes and does not commit you to a paid service.
-            </p>
+            <div className="intake-visual-copy">
+              <figure>
+                <Image
+                  src="/images/services/book-a-call.webp"
+                  alt="Illustrative preparation for a focused introductory business call"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 900px) 100vw, 46vw"
+                  priority
+                />
+              </figure>
+              <p>
+                This short onboarding form helps us understand your goal before a call. It takes about three minutes and does not commit you to a paid service.
+              </p>
+            </div>
           </div>
         </section>
         <section className="intake-form-section">

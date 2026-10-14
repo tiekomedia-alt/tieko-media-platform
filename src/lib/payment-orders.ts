@@ -1,5 +1,6 @@
 import "server-only";
 import type { FlutterwaveTransaction } from "@/lib/flutterwave";
+import { fulfillPaidOrder } from "@/lib/order-fulfillment";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
 export async function reconcilePaidOrder(transaction: FlutterwaveTransaction) {
@@ -11,7 +12,7 @@ export async function reconcilePaidOrder(transaction: FlutterwaveTransaction) {
 
   const { data: order, error: orderError } = await supabase
     .from("orders")
-    .select("id, amount_subunit, currency, email, status")
+    .select("id, reference, offer_slug, offer_name, amount_subunit, currency, full_name, email, status, fulfillment_status")
     .eq("reference", transaction.tx_ref)
     .single();
 
@@ -39,21 +40,25 @@ export async function reconcilePaidOrder(transaction: FlutterwaveTransaction) {
     return { paid: false, orderId: order.id };
   }
 
-  const { error: updateError } = await supabase
-    .from("orders")
-    .update({
-      status: "paid",
-      gateway_transaction_id: String(transaction.id),
-      payment_channel: transaction.payment_type,
-      gateway_response: transaction.processor_response,
-      paid_at: transaction.created_at ?? new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    })
-    .eq("id", order.id);
+  const { error: updateError } =
+    order.status === "paid"
+      ? { error: null }
+      : await supabase
+          .from("orders")
+          .update({
+            status: "paid",
+            gateway_transaction_id: String(transaction.id),
+            payment_channel: transaction.payment_type,
+            gateway_response: transaction.processor_response,
+            paid_at: transaction.created_at ?? new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          })
+          .eq("id", order.id);
 
   if (updateError) {
     throw new Error("Order payment status could not be saved.");
   }
 
-  return { paid: true, orderId: order.id };
+  const fulfillment = await fulfillPaidOrder(order);
+  return { paid: true, orderId: order.id, fulfilled: fulfillment.fulfilled };
 }

@@ -19,21 +19,36 @@ const serviceGroups: ServiceGroup[] = [
   {
     category: "Visibility and authority",
     items: [
+      { title: "SEO, AEO & Ranking", href: "/services/seo-aeo-ranking" },
       { title: "Media Services", href: "/mediaservices" },
+      { title: "Billboard Advertising", href: "/services/billboard-advertising" },
       { title: "Content Creation", href: "/services/content-creation" },
+      { title: "Digital Optimisation", href: "/services/digital-presence-optimisation" },
     ],
   },
   {
     category: "Build foundations",
     items: [
       { title: "Compliance and Institutional Support", href: "/services/compliance" },
+      { title: "Data and Records Management", href: "/services/data-records-management" },
+    ],
+  },
+  {
+    category: "Build intelligence",
+    items: [
+      { title: "Business Intelligence and Research", href: "/services/intelligence-reports" },
     ],
   },
 ];
 
 export default function Header() {
   const pathname = usePathname();
+  const homeActive = pathname === "/";
   const workActive = pathname === "/work" || pathname.startsWith("/work/");
+  const storeActive = pathname === "/store" || pathname.startsWith("/store/");
+  const insightsActive = pathname === "/insights" || pathname.startsWith("/insights/");
+  const aboutActive = pathname === "/about";
+  const diqActive = pathname === "/digital-intelligence-quotient";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
@@ -110,14 +125,15 @@ export default function Header() {
   }, [servicesDropdownOpen, mobileMenuOpen]);
 
   return (
-    <header
-      role="banner"
-      className={`sticky top-0 z-50 w-full transition-colors duration-200 ${
-        scrolled
-          ? "bg-warm-ivory/95 backdrop-blur-sm border-b border-grid-grey shadow-xs"
-          : "bg-warm-ivory border-b border-grid-grey/60"
-      }`}
-    >
+    <>
+      <header
+        role="banner"
+        className={`sticky top-0 z-50 w-full transition-colors duration-200 ${
+          scrolled
+            ? "bg-warm-ivory/95 backdrop-blur-sm border-b border-grid-grey shadow-xs"
+            : "bg-warm-ivory border-b border-grid-grey/60"
+        }`}
+      >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
         <div className="flex h-16 sm:h-18 items-center justify-between gap-6">
           {/* Brand Logo */}
@@ -141,8 +157,16 @@ export default function Header() {
           {/* Desktop Navigation - Reduced per user guidance: Services, Work, Intelligence, Insights, About, Book a Call */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-7 lg:gap-9 text-[0.9375rem] font-medium tracking-tight text-ink-black"
+            className="hidden lg:flex items-center gap-7 lg:gap-9 text-[0.9375rem] font-medium tracking-tight text-ink-black"
           >
+            <Link
+              href="/"
+              aria-current={homeActive ? "page" : undefined}
+              className={`py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors ${homeActive ? "text-action-red" : ""}`}
+            >
+              Home
+            </Link>
+
             {/* Services with Accessible Flyout */}
             <div className="relative" ref={servicesRef}>
               <button
@@ -222,26 +246,57 @@ export default function Header() {
               Work
             </Link>
 
+            <Link
+              href="/store"
+              aria-current={storeActive ? "page" : undefined}
+              className={`py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors ${storeActive ? "text-action-red" : ""}`}
+            >
+              Store
+            </Link>
+
+            <Link
+              href="/insights"
+              aria-current={insightsActive ? "page" : undefined}
+              className={`py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors ${insightsActive ? "text-action-red" : ""}`}
+            >
+              Insights
+            </Link>
+
+            <Link
+              href="/about"
+              aria-current={aboutActive ? "page" : undefined}
+              className={`py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors ${aboutActive ? "text-action-red" : ""}`}
+            >
+              About
+            </Link>
+
           </nav>
 
           {/* Primary CTA & Mobile Controls */}
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
-              href="/book-a-call"
-              className="hidden sm:inline-flex items-center justify-center px-4.5 py-2.25 bg-action-red hover:bg-deep-red text-white text-[0.875rem] font-semibold tracking-tight rounded-xs focus-visible:outline-2 focus-visible:outline-action-red focus-visible:outline-offset-2 transition-colors cursor-pointer shadow-xs"
+              href="/digital-intelligence-quotient"
+              aria-current={diqActive ? "page" : undefined}
+              className={`inline-flex min-h-10 items-center justify-center px-3 sm:px-4 border border-action-red text-[0.7rem] sm:text-[0.8125rem] font-bold uppercase tracking-wide rounded-xs focus-visible:outline-2 focus-visible:outline-action-red focus-visible:outline-offset-2 transition-colors ${diqActive ? "bg-action-red text-white" : "text-action-red hover:bg-action-red hover:text-white"}`}
             >
-              Book a Call
+              Check your DIQ
+            </Link>
+            <Link
+              href="/book-a-call"
+              className="hidden xl:inline-flex items-center justify-center px-4.5 py-2.25 bg-action-red hover:bg-deep-red text-white text-[0.875rem] font-semibold tracking-tight rounded-xs focus-visible:outline-2 focus-visible:outline-action-red focus-visible:outline-offset-2 transition-colors cursor-pointer shadow-xs"
+            >
+              Book a call
             </Link>
 
             {/* Mobile Hamburger Trigger */}
             <button
               ref={mobileMenuButtonRef}
               type="button"
-              className="md:hidden inline-flex items-center justify-center p-2 text-ink-black hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs"
+              className="lg:hidden inline-flex size-11 touch-manipulation items-center justify-center text-ink-black hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
               aria-label={mobileMenuOpen ? "Close main menu" : "Open main menu"}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => setMobileMenuOpen((open) => !open)}
             >
               {mobileMenuOpen ? (
                 <svg
@@ -270,6 +325,7 @@ export default function Header() {
           </div>
         </div>
       </div>
+      </header>
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
@@ -279,7 +335,7 @@ export default function Header() {
           aria-modal="true"
           aria-label="Site Navigation"
           ref={mobileMenuRef}
-          className="fixed inset-0 top-16 z-40 bg-warm-ivory md:hidden overflow-y-auto border-t border-grid-grey px-6 py-8 flex flex-col justify-between"
+          className="fixed inset-x-0 bottom-0 top-16 sm:top-18 z-40 bg-warm-ivory lg:hidden overflow-y-auto border-t border-grid-grey px-6 py-8 flex flex-col justify-between"
         >
           <div className="space-y-6">
             {/* Primary Action at Top of Mobile Menu */}
@@ -289,17 +345,28 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full flex items-center justify-center py-3.5 px-6 bg-action-red text-white text-[1rem] font-semibold rounded-xs shadow-xs focus-visible:outline-2 focus-visible:outline-action-red"
               >
-                Book a Call
+                Book a call
               </Link>
             </div>
 
             {/* Navigation Destinations */}
             <nav className="space-y-4 pt-2">
+              <div>
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={homeActive ? "page" : undefined}
+                  className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${homeActive ? "text-action-red" : "text-ink-black"}`}
+                >
+                  Home
+                </Link>
+              </div>
+
               {/* Expandable Services */}
               <div>
                 <button
                   type="button"
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  onClick={() => setMobileServicesOpen((open) => !open)}
                   className="w-full flex items-center justify-between py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight text-ink-black text-left"
                   aria-expanded={mobileServicesOpen}
                 >
@@ -359,16 +426,60 @@ export default function Header() {
                 </Link>
               </div>
 
+              <div>
+                <Link
+                  href="/store"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={storeActive ? "page" : undefined}
+                  className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${storeActive ? "text-action-red" : "text-ink-black"}`}
+                >
+                  Store
+                </Link>
+              </div>
+
+              <div>
+                <Link
+                  href="/insights"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={insightsActive ? "page" : undefined}
+                  className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${insightsActive ? "text-action-red" : "text-ink-black"}`}
+                >
+                  Insights
+                </Link>
+              </div>
+
+              <div>
+                <Link
+                  href="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={aboutActive ? "page" : undefined}
+                  className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${aboutActive ? "text-action-red" : "text-ink-black"}`}
+                >
+                  About
+                </Link>
+              </div>
+
+              <div>
+                <Link
+                  href="/digital-intelligence-quotient"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={diqActive ? "page" : undefined}
+                  className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${diqActive ? "text-action-red" : "text-ink-black"}`}
+                >
+                  Check your DIQ
+                </Link>
+              </div>
+
             </nav>
           </div>
 
           {/* Footer inside mobile menu */}
           <div className="pt-8 border-t border-grid-grey/60 text-[0.8125rem] text-slate space-y-1">
             <p className="font-semibold text-ink-black">Tieko Media Limited</p>
-            <p>Built in Lagos. Useful anywhere.</p>
+            <p>Research, content and digital systems.</p>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

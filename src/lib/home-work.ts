@@ -10,80 +10,70 @@ export const infrastructureReviewAreas = [
   "Measurement and decision-making",
 ] as const;
 
-export const teamShuffleResponsibilities = [
-  "Product strategy",
-  "User experience and interface design",
-  "Responsive engineering",
-  "Fairness and balancing logic",
-  "Custom team identities",
-  "Verification records",
-  "Shareable results",
-  "Search architecture",
-  "Continuing product improvement",
-] as const;
-
-export type WorkProject = {
+export type SelectedWorkProject = {
   name: string;
-  slug: string;
-  location?: string;
+  category: string;
+  location: string;
   description: string;
-  placeholder: string;
-  caseStudyAvailable: boolean;
+  image: string;
+  imageAlt: string;
+  imageCaption: string;
+  href?: string;
 };
 
-export const supportingWork: WorkProject[] = [
+export const selectedWorkProjects: SelectedWorkProject[] = [
   {
-    name: "Passion Care Academy",
-    slug: "passion-care-academy",
-    location: "Delaware",
-    description: "Digital reputation improvement, website strategy and development.",
-    placeholder: "Screenshot and verified outcome pending",
-    caseStudyAvailable: false,
-  },
-  {
-    name: "Compassion Heart World Mission",
-    slug: "compassion-heart-world-mission",
-    location: "Delaware",
-    description: "Website strategy, design and development for an international nonprofit organisation.",
-    placeholder: "Screenshot pending",
-    caseStudyAvailable: false,
-  },
-  {
-    name: "Delaware resort website",
-    slug: "delaware-resort-website",
-    location: "Client name unpublished",
-    description: "Website design and development.",
-    placeholder: "Screenshot pending",
-    caseStudyAvailable: false,
+    name: "TeamShuffle",
+    category: "Digital product design and development",
+    location: "Global web product",
+    description:
+      "We designed and built TeamShuffle, a responsive web-based toolkit for creating teams, making random selections and sharing transparent results.",
+    image: "/images/work/teamshuffle-home.webp",
+    imageAlt: "TeamShuffle homepage showing its team shuffler, dice roller, coin flip and spin wheel tools",
+    imageCaption: "TeamShuffle homepage",
+    href: "https://teamshuffle.win/",
   },
   {
     name: "Nairafolio",
-    slug: "nairafolio",
-    description: "Business compliance support.",
-    placeholder: "Project documentation pending",
-    caseStudyAvailable: false,
+    category: "Compliance partnership",
+    location: "Nigeria",
+    description:
+      "We supported Nairafolio as its compliance partner, helping to coordinate business compliance requirements and related documentation.",
+    image: "/images/work/nairafolio.webp",
+    imageAlt: "Nairafolio brand identity on a deep teal background",
+    imageCaption: "Nairafolio brand identity",
   },
   {
-    name: "Spen Agro",
-    slug: "spen-agro",
-    description: "Compliance and licensing.",
-    placeholder: "Project documentation pending",
-    caseStudyAvailable: false,
+    name: "Passion Care Academy",
+    category: "Website design and development",
+    location: "Delaware, United States",
+    description:
+      "We designed and built a clear, conversion-focused website for a childcare academy, helping families understand its programmes, schedule a tour and find the centre.",
+    image: "/images/work/passion-care-academy.webp",
+    imageAlt: "Passion Care Academy website homepage designed and built by Tieko Media",
+    imageCaption: "Live website preview",
+    href: "https://www.passioncareacademy.org/",
   },
   {
-    name: "OliveBloom",
-    slug: "olivebloom",
-    location: "Lagos",
-    description: "Nonprofit compliance and branding.",
-    placeholder: "Project documentation pending",
-    caseStudyAvailable: false,
+    name: "White House Resort",
+    category: "Website design and development",
+    location: "Delaware, United States",
+    description:
+      "We designed and built a Victorian-inspired website for a resort and event venue, using the property’s character and imagery to create a distinctive online presence.",
+    image: "/images/work/white-house-resort.webp",
+    imageAlt: "White House Resort property featured on the website designed and built by Tieko Media",
+    imageCaption: "Published website imagery",
+    href: "https://whitehouseresort-e352f.firebaseapp.com/",
+  },
+  {
+    name: "Compassionate Heart World Mission",
+    category: "Nonprofit website design and development",
+    location: "International nonprofit organisation",
+    description:
+      "We designed and built a clear digital home for Compassionate Heart World Mission, bringing its programmes, volunteering opportunities and donation pathways together in one place.",
+    image: "/images/work/compassionate-heart-world-mission.webp",
+    imageAlt: "Compassionate Heart World Mission website homepage designed and built by Tieko Media",
+    imageCaption: "Live website preview",
+    href: "https://www.compassionatemission.org/",
   },
 ];
-
-export const homepageSupportingWork = supportingWork.slice(0, 2);
-
-export const teamShuffleCaseStudy = {
-  slug: "teamshuffle",
-  href: "/work/teamshuffle",
-  caseStudyAvailable: false,
-} as const;

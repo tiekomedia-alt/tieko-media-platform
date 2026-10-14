@@ -7,9 +7,10 @@ type CheckoutFormProps = {
   offerSlug: string;
   offerName: string;
   price: string;
+  requiresProjectDetails: boolean;
 };
 
-export default function CheckoutForm({ offerSlug, offerName, price }: CheckoutFormProps) {
+export default function CheckoutForm({ offerSlug, offerName, price, requiresProjectDetails }: CheckoutFormProps) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -64,25 +65,29 @@ export default function CheckoutForm({ offerSlug, offerName, price }: CheckoutFo
           <input name="fullName" type="text" autoComplete="name" required />
         </label>
         <label>
-          <span>Business or organisation</span>
-          <input name="organisation" type="text" autoComplete="organization" required />
-        </label>
-        <label>
           <span>Email address</span>
           <input name="email" type="email" autoComplete="email" required />
         </label>
-        <label>
-          <span>Phone or WhatsApp</span>
-          <input name="phone" type="tel" autoComplete="tel" required />
-        </label>
-        <label>
-          <span>What should this session help you achieve?</span>
-          <textarea name="projectGoal" rows={4} required placeholder="Tell us about the campaign, platform and result you want to work towards." />
-        </label>
+        {requiresProjectDetails && (
+          <>
+            <label>
+              <span>Business or organisation</span>
+              <input name="organisation" type="text" autoComplete="organization" required />
+            </label>
+            <label>
+              <span>Phone or WhatsApp</span>
+              <input name="phone" type="tel" autoComplete="tel" required />
+            </label>
+            <label>
+              <span>What should this session help you achieve?</span>
+              <textarea name="projectGoal" rows={4} required placeholder="Tell us about the campaign, platform and result you want to work towards." />
+            </label>
+          </>
+        )}
       </div>
       <label className="checkout-consent">
         <input type="checkbox" required />
-        <span>I agree to the offer details and consent to being contacted about delivery.</span>
+        <span>I agree to the offer details, the Terms of Service and being contacted about delivery.</span>
       </label>
       <button type="submit" disabled={submitting}>
         {submitting ? "Opening secure checkout..." : `Continue to Flutterwave — ${price}`}

@@ -27,21 +27,21 @@ export const capabilityGroups: CapabilityGroup[] = [
         name: "Media Buying",
         href: "/services/media-buying",
         description:
-          "Plan and place advertising around a defined audience, campaign objective and measurement framework. Tieko Media coordinates channel selection, budget allocation, buying, optimisation and reporting across suitable media.",
+          "Plan and place advertising around a defined audience, campaign objective and measurement framework. We coordinate channel selection, budget allocation, buying, optimisation and reporting across suitable media.",
         linkLabel: "Explore Media Buying",
       },
       {
         name: "Digital Presence Optimisation",
         href: "/services/digital-presence-optimisation",
         description:
-          "Improve how your business is found, understood, trusted and converted across your website, search engines, directories, content and emerging AI discovery systems.",
+          "Improve how your website and owned profiles explain the offer, build trust and move visitors towards an enquiry through clearer pages, conversion paths and measurement.",
         linkLabel: "Improve Your Digital Presence",
       },
       {
         name: "Billboard Advertising",
         href: "/services/billboard-advertising",
         description:
-          "Plan outdoor campaigns around location, audience, format, creative visibility and verified placement. Tieko Media coordinates the campaign from assessment to reporting.",
+          "Plan outdoor campaigns around location, audience, format, creative visibility and verified placement. We coordinate the campaign from assessment to reporting.",
         linkLabel: "Explore Billboard Advertising",
       },
     ],
@@ -89,14 +89,14 @@ export const capabilityGroups: CapabilityGroup[] = [
         name: "Data and Records Management",
         href: "/services/data-records-management",
         description:
-          "Digitise, organise, classify, retain, retrieve and govern institutional records. Tieko Media also helps organisations discover useful intelligence within data they are authorised to process.",
+          "Digitise, organise, classify, retain, retrieve and govern institutional records. We also help you discover useful intelligence within data you are authorised to process.",
         linkLabel: "Explore Data and Records Management",
       },
       {
         name: "Business Automation & AI Systems",
         href: "/services/business-automation-ai-systems",
         description:
-          "Tieko Media helps businesses connect tools, automate repetitive work and build practical AI-assisted systems that improve response, follow-up, content operations, reporting and internal access to knowledge.",
+          "We help you connect tools, automate repetitive work and build practical AI-assisted systems that improve response, follow-up, content operations, reporting and internal access to knowledge.",
         linkLabel: "Explore Business Automation & AI Systems",
       },
     ],

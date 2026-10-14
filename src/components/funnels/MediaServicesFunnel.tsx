@@ -50,14 +50,14 @@ const services = [
 const callSteps = [
   ["01", "Choose how to book", "Select an available Cal.com time for a confirmed appointment, or send a callback request if the available times do not suit you."],
   ["02", "Share useful context", "Tell us about your business, your main challenge and whether you prefer a phone or WhatsApp audio call."],
-  ["03", "Tieko Media calls you", "We initiate the 15-minute call using the confirmed time and contact method."],
+  ["03", "We call you", "We initiate the 15-minute call using the confirmed time and contact method."],
 ];
 
 const faqs = [
   ["Is the introductory call free?", "Yes. The 15-minute introductory call helps us understand your goal, identify the main challenge and agree a suitable next step."],
   ["Will I receive a full strategy during the call?", "No. This is an introductory conversation. Detailed strategy, campaign setup, creative production and implementation are paid services scoped afterwards."],
-  ["Is my time automatically confirmed?", "A time booked successfully through the Cal.com calendar is confirmed when Cal.com shows an accepted status. The alternative callback form is only a request, so Tieko Media will contact you before confirming it."],
-  ["Who starts the call?", "Tieko Media initiates the call after the time has been confirmed. You can choose a phone call or WhatsApp audio call."],
+  ["Is my time automatically confirmed?", "A time booked successfully through the Cal.com calendar is confirmed when Cal.com shows an accepted status. The alternative callback form is only a request, so we will contact you before confirming it."],
+  ["Who starts the call?", "We initiate the call after the time has been confirmed. You can choose a phone call or WhatsApp audio call."],
   ["Do you guarantee advertising results?", "No. We do not promise sales, virality or platform outcomes. We help build a clearer, more connected marketing pathway based on the agreed scope."],
 ];
 
@@ -73,6 +73,7 @@ export default function MediaServicesFunnel() {
           <Image src="/brand/tieko-logo-header.png" alt="Tieko Media" width={402} height={211} priority />
         </Link>
         <nav aria-label="Media services navigation">
+          <Link href="/">Home</Link>
           <a href="#free-guide">Free Guide</a>
           <a href="#how-we-help">How We Help</a>
           <a href="#work">Work</a>
@@ -87,28 +88,40 @@ export default function MediaServicesFunnel() {
           <AmiRibbon />
           <div className="media-call-shell media-call-hero-layout">
             <div className="media-call-hero-copy">
-              <p className="media-call-kicker">Advertising, landing pages and follow-up</p>
+              <p className="media-call-kicker">Campaign strategy and customer journeys</p>
               <h1 id="media-call-title">Make your next marketing move with a clear plan.</h1>
               <p className="media-call-lead">
-                Tieko Media helps businesses connect their advertising, landing pages and follow-up so interested visitors have a clear path to becoming customers.
+                We help you connect campaigns, customer journeys and response systems so interested visitors have a clear path to becoming customers.
               </p>
               <div className="media-call-actions">
                 <TrackedFunnelLink href="#book" eventName="media_services_book_call_clicked" placement="hero" className="media-call-primary">
-                  Book a Call <Arrow />
+                  Book a call <Arrow />
                 </TrackedFunnelLink>
                 <a href="#free-guide" className="media-call-secondary">Explore the Free Guide</a>
               </div>
             </div>
-            <aside className="media-call-intro-card" aria-label="Free introductory call details">
-              <span>Free 15-minute introductory call</span>
-              <h2>A focused first conversation.</h2>
-              <ul>
-                <li>Discuss your business goal</li>
-                <li>Identify the main challenge</li>
-                <li>Agree a suitable next step</li>
-              </ul>
-              <p>Choose a phone call or WhatsApp audio call. Tieko Media will confirm the time and initiate the call.</p>
-            </aside>
+            <div className="media-call-hero-panel">
+              <figure className="media-call-hero-visual">
+                <Image
+                  src="/images/services/media-services.webp"
+                  alt="Illustrative campaign planning and customer journey workspace"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 900px) 100vw, 45vw"
+                  priority
+                />
+              </figure>
+              <aside className="media-call-intro-card" aria-label="Free introductory call details">
+                <span>Free 15-minute introductory call</span>
+                <h2>A focused first conversation.</h2>
+                <ul>
+                  <li>Discuss your business goal</li>
+                  <li>Identify the main challenge</li>
+                  <li>Agree a suitable next step</li>
+                </ul>
+                <p>Choose a phone call or WhatsApp audio call. We will confirm the time and initiate the call.</p>
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -125,13 +138,12 @@ export default function MediaServicesFunnel() {
         <section id="how-we-help" className="media-call-services" aria-labelledby="media-help-title">
           <div className="media-call-shell">
             <div className="media-call-heading">
-              <p className="media-call-kicker">How Tieko Media helps</p>
+              <p className="media-call-kicker">How we help</p>
               <h2 id="media-help-title">Connect the campaign to what happens next.</h2>
             </div>
             <div className="media-call-service-grid">
-              {services.map((service, index) => (
+              {services.map((service) => (
                 <article key={service.title}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
                   <h3>{service.title}</h3>
                   <p>{service.copy}</p>
                 </article>
@@ -150,7 +162,6 @@ export default function MediaServicesFunnel() {
             <div className="media-call-guide-grid">
               {freeFramework.map((item) => (
                 <article key={item.number}>
-                  <span>{item.number}</span>
                   <h3>{item.title}</h3>
                   <p>{item.copy}</p>
                 </article>
@@ -169,7 +180,7 @@ export default function MediaServicesFunnel() {
               <article className="media-call-work-featured">
                 <span>Featured product</span>
                 <h3>TeamShuffle</h3>
-                <p>Tieko Media shaped the product strategy, user experience, responsive engineering and search architecture behind a global web-based toolkit for fair team selection.</p>
+                    <p>We shaped the product strategy, user experience, responsive engineering and search architecture behind a global web-based toolkit for fair team selection.</p>
                 <a href="https://teamshuffle.win" target="_blank" rel="noreferrer">Visit TeamShuffle <Arrow /></a>
               </article>
               <article>
@@ -194,9 +205,8 @@ export default function MediaServicesFunnel() {
               <h2 id="media-process-title">A clear request, confirmation and call.</h2>
             </div>
             <div className="media-call-process-grid">
-              {callSteps.map(([number, title, copy]) => (
-                <article key={number}>
-                  <span>{number}</span>
+              {callSteps.map(([, title, copy]) => (
+                <article key={title}>
                   <h3>{title}</h3>
                   <p>{copy}</p>
                 </article>
@@ -209,14 +219,14 @@ export default function MediaServicesFunnel() {
         <section id="book" className="media-call-booking" aria-labelledby="media-book-title">
           <div className="media-call-shell media-call-booking-grid">
             <div className="media-call-booking-copy">
-              <p className="media-call-kicker">Book a Call</p>
+              <p className="media-call-kicker">Book a call</p>
               <h2 id="media-book-title">Tell us what is getting in the way.</h2>
-              <p>Tell us about your business, your goals and what is getting in the way. We’ll discuss where Tieko Media can help and the next steps.</p>
+              <p>Tell us about your business, your goals and what is getting in the way. We’ll discuss where we can help and the next steps.</p>
               <div>
                 <strong>Free introductory conversation</strong>
                 <span>15 minutes</span>
                 <span>Phone or WhatsApp audio</span>
-                <span>Tieko Media initiates the confirmed call</span>
+                <span>We initiate the confirmed call</span>
               </div>
             </div>
             <div className="media-call-booking-options">
@@ -231,7 +241,7 @@ export default function MediaServicesFunnel() {
                 </summary>
                 <div className="media-call-callback-intro">
                   <h3>Request a callback</h3>
-                  <p>This route is a request only. Tieko Media will contact you to agree and confirm a suitable time.</p>
+              <p>This route is a request only. We will contact you to agree and confirm a suitable time.</p>
                 </div>
                 <MediaIntroCallForm />
               </details>
@@ -259,10 +269,10 @@ export default function MediaServicesFunnel() {
         <section className="media-call-final">
           <div className="media-call-final-ribbon" aria-hidden="true" />
           <div className="media-call-shell">
-            <p>One useful conversation can clarify the next move.</p>
+              <p>A clear conversation can clarify the next move.</p>
             <h2>Ready to talk?</h2>
             <TrackedFunnelLink href="#book" eventName="media_services_book_call_clicked" placement="final_cta">
-              Book a Call <Arrow />
+              Book a call <Arrow />
             </TrackedFunnelLink>
           </div>
         </section>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ComplianceInstitutionalLanding from "@/components/services/ComplianceInstitutionalLanding";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 
 export const metadata: Metadata = {
   title: "Compliance and Institutional Support in Nigeria",
@@ -14,9 +15,25 @@ export const metadata: Metadata = {
     siteName: "Tieko Media",
     locale: "en_GB",
     type: "website",
+    images: ["/images/services/compliance-institutional-support.webp"],
   },
 };
 
 export default function CompliancePage() {
-  return <ComplianceInstitutionalLanding />;
+  return (
+    <>
+      <ServiceStructuredData
+        name="Compliance and Institutional Support"
+        description="Business administration and application coordination for Nigerian company filings, export registration, trademarks, data protection, tax and institutional pathways."
+        path="/services/compliance"
+        serviceType={[
+          "Business compliance coordination",
+          "Company filing support",
+          "Export registration support",
+          "Data protection compliance support",
+        ]}
+      />
+      <ComplianceInstitutionalLanding />
+    </>
+  );
 }

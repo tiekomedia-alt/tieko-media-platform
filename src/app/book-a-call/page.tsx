@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/navigation/Header";
 import CalBookingEmbed from "@/components/forms/CalBookingEmbed";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     siteName: "Tieko Media",
     locale: "en_GB",
     type: "website",
+    images: ["/images/services/book-a-call.webp"],
   },
 };
 
@@ -34,11 +36,23 @@ export default async function BookACallPage({ searchParams }: PageProps<"/book-a
               <h1>Let us make the next step useful.</h1>
               <p>Choose a time for a phone or WhatsApp audio call and tell us what a productive conversation should cover.</p>
             </div>
-            <ul>
-              <li><span>01</span> Clarify the business goal</li>
-              <li><span>02</span> Identify the right starting point</li>
-              <li><span>03</span> Agree the next action</li>
-            </ul>
+            <div className="booking-visual-stack">
+              <figure>
+                <Image
+                  src="/images/services/book-a-call.webp"
+                  alt="Illustrative call preparation workspace with phone, headphones and discovery notes"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 900px) 100vw, 46vw"
+                  priority
+                />
+              </figure>
+              <ul>
+                <li>Clarify the business goal</li>
+                <li>Identify the right starting point</li>
+                <li>Agree the next action</li>
+              </ul>
+            </div>
           </div>
         </section>
         <section className="booking-form-section">

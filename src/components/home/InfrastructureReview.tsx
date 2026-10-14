@@ -1,12 +1,10 @@
 import Link from "next/link";
-import ChapterMarker from "@/components/home/ChapterMarker";
 import { infrastructureReviewAreas, reviewRequestHref } from "@/lib/home-work";
 
 export default function InfrastructureReview() {
   return (
     <section className="infrastructure-review" aria-labelledby="infrastructure-review-heading">
       <div className="section-shell">
-        <ChapterMarker number="04" />
         <div className="review-layout">
           <div className="review-heading">
             <p className="section-eyebrow">Digital Infrastructure Review</p>
@@ -20,9 +18,8 @@ export default function InfrastructureReview() {
         </div>
 
         <ol className="review-areas">
-          {infrastructureReviewAreas.map((area, index) => (
+          {infrastructureReviewAreas.map((area) => (
             <li key={area}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{area}</strong>
             </li>
           ))}

@@ -6,6 +6,7 @@ import { FormEvent, useState } from "react";
 const services = [
   ["content-creation", "Content Creation"],
   ["media-buying", "Media Buying"],
+  ["seo-aeo-ranking", "SEO, AEO & Search Ranking"],
   ["digital-presence-optimisation", "Digital Presence Optimisation"],
   ["compliance", "Compliance"],
   ["business-automation-ai-systems", "Business Automation & AI Systems"],

@@ -6,6 +6,7 @@ import { FormEvent, useState } from "react";
 const serviceLabels: Record<string, string> = {
   "content-creation": "Content Creation",
   "media-buying": "Media Buying",
+  "seo-aeo-ranking": "SEO, AEO & Search Ranking",
   compliance: "Compliance",
   "digital-presence-optimisation": "Digital Presence Optimisation",
   "intelligence-reports": "Intelligence Reports",
@@ -75,15 +76,15 @@ export default function ReviewForm({ initialService }: { initialService: string 
 
   return (
     <form className="intake-form" onSubmit={submitReview}>
-      <div className="intake-progress" aria-label={`Step ${step} of 3`}>
+      <div className="intake-progress" aria-label="Form progress">
         {[1, 2, 3].map((number) => (
-          <span key={number} className={number <= step ? "is-active" : ""}>{number}</span>
+          <span key={number} className={number <= step ? "is-active" : ""} aria-hidden="true" />
         ))}
       </div>
 
       {step === 1 && (
         <fieldset>
-          <legend><span>01</span> What do you want help with?</legend>
+          <legend>What do you want help with?</legend>
           <p>Choose the closest starting point. We can refine the scope together.</p>
           <div className="intake-options">
             {Object.entries(serviceLabels).map(([value, label]) => (
@@ -105,7 +106,7 @@ export default function ReviewForm({ initialService }: { initialService: string 
 
       {step === 2 && (
         <fieldset>
-          <legend><span>02</span> Tell us about the goal.</legend>
+          <legend>Tell us about the goal.</legend>
           <div className="intake-field-grid">
             <label className="intake-field intake-field-wide">
               <span>What are you trying to achieve?</span>
@@ -148,7 +149,7 @@ export default function ReviewForm({ initialService }: { initialService: string 
 
       {step === 3 && (
         <fieldset>
-          <legend><span>03</span> Where should we reach you?</legend>
+          <legend>Where should we reach you?</legend>
           <div className="intake-field-grid">
             <label className="intake-field">
               <span>Full name</span>

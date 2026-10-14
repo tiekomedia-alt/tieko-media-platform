@@ -26,13 +26,13 @@ export default function OpenGraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           <div style={{ color: "#B42318", fontSize: 21, fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase" }}>
-            Business foundations · Media · Digital systems
+            Business foundations / Media / Digital systems
           </div>
           <div style={{ fontSize: 76, fontWeight: 800, lineHeight: 0.96, letterSpacing: "-3px", textTransform: "uppercase" }}>
             Build a business people can find, trust and choose.
           </div>
         </div>
-        <div style={{ color: "#5F5B55", fontSize: 22 }}>Built in Lagos. Useful anywhere.</div>
+        <div style={{ color: "#5F5B55", fontSize: 22 }}>Research, content and digital systems.</div>
       </div>
       <div style={{ position: "absolute", right: -110, top: -65, width: 400, height: 760, background: "#E5252A", transform: "rotate(12deg)", display: "flex", opacity: 0.96 }} />
       <div style={{ position: "absolute", right: 80, bottom: 42, width: 210, height: 26, background: "#7A1712", transform: "rotate(-8deg)", display: "flex" }} />

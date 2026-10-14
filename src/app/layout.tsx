@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
+import SiteFooter from "@/components/navigation/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -25,24 +26,39 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Tieko Media | Business Services, Media and Digital Systems",
+    default: "Tieko Media | Business Services, Media & Digital Systems",
     template: "%s | Tieko Media",
   },
   description:
-    "Tieko Media helps African businesses build stronger foundations, improve visibility, create useful content, manage information and make better decisions. Book a call.",
+    "Tieko Media helps African businesses turn attention into trust and enquiries through research, content, business support and digital systems.",
   metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "Build a Business People Can Find, Trust and Choose | Tieko Media",
+    title: "Tieko Media | Business Services, Media & Digital Systems",
     description:
-      "From media and content to compliance coordination, business intelligence, digital optimisation and records management, Tieko Media builds the systems behind credible growth.",
+      "Research, content, business support and digital systems that help African businesses get found, build trust and grow with stronger foundations.",
     url: "/",
     siteName: "Tieko Media",
     locale: "en_GB",
     type: "website",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Tieko Media business services" }],
   },
-  verification: process.env.GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  twitter: {
+    card: "summary_large_image",
+    title: "Tieko Media | Business Services, Media & Digital Systems",
+    description: "Research, content, business support and digital systems that help African businesses get found, build trust and grow.",
+    images: ["/opengraph-image"],
+  },
+  verification:
+    process.env.GOOGLE_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION
+      ? {
+          ...(process.env.GOOGLE_SITE_VERIFICATION
+            ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+            : {}),
+          ...(process.env.BING_SITE_VERIFICATION
+            ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }
+            : {}),
+        }
+      : undefined,
 };
 
 export default function RootLayout({
@@ -53,6 +69,7 @@ export default function RootLayout({
   const organisationJsonLd = {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],
+    "@id": `${SITE_URL}/#organization`,
     name: "Tieko Media",
     legalName: "Tieko Media Limited",
     url: SITE_URL,
@@ -76,7 +93,7 @@ export default function RootLayout({
       lang="en-GB"
       className={`${barlowCondensed.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-warm-ivory text-ink-black selection:bg-tieko-red selection:text-white">
+      <body className="premium-motion min-h-full flex flex-col bg-warm-ivory text-ink-black selection:bg-tieko-red selection:text-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -87,6 +104,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

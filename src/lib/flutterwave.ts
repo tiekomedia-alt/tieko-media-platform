@@ -27,8 +27,18 @@ export type FlutterwaveTransaction = {
 function getSecretKey() {
   const secretKey = process.env.FLUTTERWAVE_SECRET_KEY;
 
-  if (!secretKey || !secretKey.startsWith("FLWSECK")) {
+  if (!secretKey) {
     throw new Error("FLUTTERWAVE_SECRET_KEY is not configured.");
+  }
+
+  if (secretKey.startsWith("FLWPUBK")) {
+    throw new Error(
+      "FLUTTERWAVE_SECRET_KEY contains a public key. Replace it with a Flutterwave secret key (FLWSECK_TEST-… or FLWSECK-…).",
+    );
+  }
+
+  if (!secretKey.startsWith("FLWSECK")) {
+    throw new Error("FLUTTERWAVE_SECRET_KEY is not a valid Flutterwave secret key.");
   }
 
   return secretKey;

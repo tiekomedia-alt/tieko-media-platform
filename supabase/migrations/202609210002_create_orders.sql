@@ -15,6 +15,10 @@ create table if not exists public.orders (
   gateway_transaction_id text,
   payment_channel text,
   gateway_response text,
+  fulfillment_status text not null default 'not_required' check (fulfillment_status in ('not_required', 'pending', 'sending', 'fulfilled', 'failed')),
+  fulfillment_email_id text,
+  fulfillment_error text,
+  fulfilled_at timestamptz,
   paid_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()

@@ -20,8 +20,18 @@ function readText(value: unknown, maxLength: number) {
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as CheckoutRequest;
+    const offerSlug = readText(body.offerSlug, 100);
+    const offer = getSalesOffer(offerSlug);
+
+    if (!offer || !offer.amountSubunit) {
+      return NextResponse.json(
+        { error: "This offer is not available for checkout yet." },
+        { status: 503 },
+      );
+    }
+
     const customer = {
-      offerSlug: readText(body.offerSlug, 100),
+      offerSlug,
       fullName: readText(body.fullName, 160),
       organisation: readText(body.organisation, 200),
       email: readText(body.email, 254).toLowerCase(),
@@ -29,17 +39,14 @@ export async function POST(request: Request) {
       projectGoal: readText(body.projectGoal, 2000),
     };
 
-    if (Object.values(customer).some((value) => !value) || !customer.email.includes("@")) {
+    const missingRequiredDetails =
+      !customer.fullName ||
+      !customer.email ||
+      !customer.email.includes("@") ||
+      (offer.requiresProjectDetails && (!customer.organisation || !customer.phone || !customer.projectGoal));
+
+    if (missingRequiredDetails) {
       return NextResponse.json({ error: "Please complete every field correctly." }, { status: 400 });
-    }
-
-    const offer = getSalesOffer(customer.offerSlug);
-
-    if (!offer || !offer.amountSubunit) {
-      return NextResponse.json(
-        { error: "This offer is not available for checkout yet." },
-        { status: 503 },
-      );
     }
 
     const supabase = getSupabaseAdmin();
@@ -62,6 +69,7 @@ export async function POST(request: Request) {
         email: customer.email,
         phone: customer.phone,
         project_goal: customer.projectGoal,
+        fulfillment_status: offer.fulfillment === "manual" ? "not_required" : "pending",
       })
       .select("id")
       .single();

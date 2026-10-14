@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local development tooling and temporary output
+/.agents/
+/supabase/.temp/
+/tmp/

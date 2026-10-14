@@ -29,7 +29,7 @@ export default async function CheckoutPage({ params }: CheckoutPageProps) {
       <main id="main-content" className="checkout-page">
         <div className="funnel-shell checkout-layout">
           <section className="checkout-offer" aria-labelledby="checkout-heading">
-            <p className="funnel-kicker">Tieko Media / Paid session</p>
+            <p className="funnel-kicker">Tieko Media / Secure purchase</p>
             <h1 id="checkout-heading">{offer.name}</h1>
             <p>{offer.shortDescription}</p>
             <ul>
@@ -37,12 +37,12 @@ export default async function CheckoutPage({ params }: CheckoutPageProps) {
             </ul>
             <div className="checkout-boundary">
               <strong>What happens next</strong>
-              <p>After payment is confirmed, Tieko Media will contact you to complete the questionnaire and schedule the session.</p>
+              <p>{offer.fulfillment === "manual" ? "After payment is confirmed, Tieko Media will contact you to complete the questionnaire and schedule the session." : "After Flutterwave confirms the payment, the access instructions are sent automatically to your checkout email."}</p>
             </div>
           </section>
           <aside className="checkout-panel">
             {price ? (
-              <CheckoutForm offerSlug={offer.slug} offerName={offer.name} price={price} />
+              <CheckoutForm offerSlug={offer.slug} offerName={offer.name} price={price} requiresProjectDetails={offer.requiresProjectDetails} />
             ) : (
               <div className="checkout-unavailable">
                 <span>Checkout not activated</span>
