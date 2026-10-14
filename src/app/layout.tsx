@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
+import Script from "next/script";
 import SiteFooter from "@/components/navigation/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+const GOOGLE_ANALYTICS_ID = "G-XRZCW97GH0";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-barlow-condensed",
@@ -105,6 +108,16 @@ export default function RootLayout({
         </a>
         {children}
         <SiteFooter />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GOOGLE_ANALYTICS_ID}');`}
+        </Script>
       </body>
     </html>
   );
