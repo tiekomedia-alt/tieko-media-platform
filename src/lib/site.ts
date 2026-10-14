@@ -1,4 +1,4 @@
-export const SITE_URL = "https://tiekomedia.com";
+export const SITE_URL = "https://www.tiekomedia.com";
 
 export const INDEXABLE_ROUTES = [
   "/",

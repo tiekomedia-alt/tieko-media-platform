@@ -133,7 +133,7 @@ function resultEmail(score: number, tier: ReturnType<typeof calculateDiq>["tier"
           <table style="width:100%;border-collapse:collapse;font-size:14px">${categoryRows(categoryScores)}</table>
           <p style="margin:24px 0 8px;font-weight:700">Recommended next move</p>
           <p style="margin:0;line-height:1.7">${escapeHtml(tier.recommendation)}</p>
-          <a href="https://tiekomedia.com/start-your-review" style="display:inline-block;margin-top:26px;padding:14px 20px;background:#d92d20;color:#fff;text-decoration:none;font-weight:700">Get a free infrastructure review</a>
+          <a href="https://www.tiekomedia.com/start-your-review" style="display:inline-block;margin-top:26px;padding:14px 20px;background:#d92d20;color:#fff;text-decoration:none;font-weight:700">Get a free infrastructure review</a>
         </div>
         <p style="margin:0;padding:18px 30px;background:#eee8de;color:#5f5b55;font-size:12px;line-height:1.6">You requested this result at tiekomedia.com. Tieko Media will never place your email address on a public scorecard.</p>
       </div>
