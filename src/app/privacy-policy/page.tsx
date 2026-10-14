@@ -52,7 +52,7 @@ const sections = [
     title: "Service providers and disclosures",
     content: (
       <>
-        <p>We use carefully selected service providers to operate the website and deliver requested services. These may include Supabase for database storage, Resend for email delivery, Google Analytics and PostHog for analytics, Cal.com for appointment scheduling, Flutterwave for payment processing and our website hosting and infrastructure providers.</p>
+        <p>We use carefully selected service providers to operate the website and deliver requested services. These may include Supabase for database storage, Resend for email delivery, Google Analytics, Meta Pixel and PostHog for analytics and advertising measurement, Cal.com for appointment scheduling, Flutterwave for payment processing and our website hosting and infrastructure providers.</p>
         <p>Each provider processes information for its relevant function and may apply its own privacy terms when you interact directly with its service. Information may also be disclosed to professional advisers, regulators, courts or law-enforcement bodies where disclosure is required by law or reasonably necessary to establish, exercise or defend legal rights.</p>
         <p>Some providers may process information outside Nigeria. Where an international transfer occurs, we take reasonable steps to use an appropriate legal basis and safeguards suitable to the information and destination.</p>
       </>
