@@ -109,7 +109,7 @@ export default function ContactEnquiryForm() {
         </label>
         <label className="contact-honeypot" aria-hidden="true">
           Company
-          <input name="company" type="text" tabIndex={-1} autoComplete="off" />
+          <input name="company" type="text" tabIndex={-1} autoComplete="new-password" />
         </label>
       </div>
       <p className="contact-form-note">By sending this enquiry, you agree that Tieko Media may respond about your request. Please do not include confidential records or payment details.</p>

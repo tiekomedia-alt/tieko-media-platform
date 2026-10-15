@@ -74,7 +74,10 @@ export async function POST(request: Request) {
     const email = text(body.email, 254).toLowerCase();
     const enquiry = text(body.enquiry, 120);
     const message = text(body.message, 3000);
-    if (!name || !validEmail(email) || !ENQUIRIES.has(enquiry) || text(body.company, 120)) return response({ error: "Please complete the required fields with a valid email address." }, 400);
+    if (text(body.company, 120)) return response({ error: "Submission could not be accepted." }, 400);
+    if (!name) return response({ error: "Please enter your name." }, 400);
+    if (!validEmail(email)) return response({ error: "Please enter a valid email address." }, 400);
+    if (!ENQUIRIES.has(enquiry)) return response({ error: "Please choose the service or enquiry area that is closest to your request." }, 400);
     if (limited(clientKey(request, email))) return response({ error: "Too many enquiries from this address. Please try again later." }, 429);
 
     const resend = getResendClient();
