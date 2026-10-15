@@ -19,6 +19,10 @@ const enquiryOptions = [
 
 type SubmissionResponse = { error?: string };
 
+function validEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
 export default function ContactEnquiryForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -31,15 +35,34 @@ export default function ContactEnquiryForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const enquiry = String(formData.get("enquiry") ?? "");
+
+    const validationError = !name
+      ? "Please enter your name."
+      : !validEmail(email)
+        ? "Please enter a valid email address, for example name@company.com."
+        : !enquiryOptions.includes(enquiry)
+          ? "Please choose what your enquiry is about."
+          : "";
+
+    if (validationError) {
+      setError(validationError);
+      const fieldName = !name ? "name" : !validEmail(email) ? "email" : "enquiry";
+      form.querySelector<HTMLInputElement | HTMLSelectElement>(`[name="${fieldName}"]`)?.focus();
+      setSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: formData.get("name"),
-          email: formData.get("email"),
-          enquiry: formData.get("enquiry"),
+          name,
+          email,
+          enquiry,
           message: formData.get("message"),
           company: formData.get("company"),
         }),
@@ -80,20 +103,20 @@ export default function ContactEnquiryForm() {
   }
 
   return (
-    <form className="contact-enquiry-form" onSubmit={submitEnquiry}>
+    <form className="contact-enquiry-form" onSubmit={submitEnquiry} noValidate>
       <div className="contact-field-grid">
         <label>
           <span>Your name</span>
-          <input name="name" type="text" autoComplete="name" maxLength={160} required />
+          <input name="name" type="text" autoComplete="name" maxLength={160} aria-invalid={Boolean(error)} />
         </label>
         <label>
           <span>Email address</span>
-          <input name="email" type="email" autoComplete="email" inputMode="email" maxLength={254} required />
+          <input name="email" type="email" autoComplete="email" inputMode="email" maxLength={254} aria-invalid={Boolean(error)} />
           <small>We will send your confirmation here.</small>
         </label>
         <label className="contact-field-wide">
           <span>What is your enquiry about?</span>
-          <select name="enquiry" defaultValue="" required>
+          <select name="enquiry" defaultValue="" aria-invalid={Boolean(error)}>
             <option value="" disabled>Select the closest service</option>
             {enquiryOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
