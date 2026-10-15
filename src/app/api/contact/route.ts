@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { emailField, emailLayout, escapeHtml } from "@/lib/email-content";
 import { getResendClient, isResendConfigured, leadsToEmail, resendFromEmail } from "@/lib/resend";
-import { isAllowedOrigin } from "@/lib/site";
+import { absoluteUrl, isAllowedOrigin } from "@/lib/site";
 
 export const runtime = "nodejs";
 
@@ -65,7 +65,103 @@ function limited(key: string) {
 }
 
 function acknowledgement(name: string, enquiry: string) {
-  return `<div style="background:#f4f0e7;padding:32px;font-family:Arial,sans-serif;color:#111"><div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #d8d1c5"><div style="background:#252321;color:#fff;padding:24px"><p style="margin:0 0 8px;color:#ef7779;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px">Tieko Media</p><h1 style="margin:0;font-size:28px">We received your enquiry</h1></div><div style="padding:28px;line-height:1.7"><p>Hello ${escapeHtml(name)},</p><p>Thank you for contacting Tieko Media about <strong>${escapeHtml(enquiry)}</strong>. We are reviewing your message and will respond with the most useful next step.</p><p>Please note that sending an enquiry does not create a client relationship or confirm a service scope. We will confirm any next step with you directly.</p><p style="margin-top:28px">Tieko Media Limited</p></div></div></div>`;
+  const websiteUrl = absoluteUrl("/");
+  const servicesUrl = absoluteUrl("/services");
+  const logoUrl = absoluteUrl("/brand/tieko-logo-circle.png");
+
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title>Your enquiry is with Tieko Media</title>
+    <style>
+      :root { color-scheme: light; supported-color-schemes: light; }
+      @media only screen and (max-width: 620px) {
+        .email-shell { width: 100% !important; }
+        .email-pad { padding-left: 24px !important; padding-right: 24px !important; }
+        .email-title { font-size: 32px !important; line-height: 1.08 !important; }
+        .email-button { display: block !important; width: auto !important; text-align: center !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0;padding:0;background-color:#eee9df;color:#111111;font-family:Arial,Helvetica,sans-serif;">
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">We have received your ${escapeHtml(enquiry)} enquiry and will review the most useful next step.</div>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background-color:#eee9df;">
+      <tr>
+        <td align="center" style="padding:28px 12px;">
+          <table role="presentation" width="640" cellspacing="0" cellpadding="0" border="0" class="email-shell" style="width:640px;max-width:640px;background-color:#fffdf8;border:1px solid #d7d0c4;border-collapse:collapse;">
+            <tr>
+              <td style="height:7px;background-color:#c5261b;font-size:0;line-height:0;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="email-pad" style="padding:30px 42px 22px;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td width="76" valign="middle" style="width:76px;">
+                      <a href="${websiteUrl}" style="text-decoration:none;">
+                        <img src="${logoUrl}" width="64" height="64" alt="Tieko Media" style="display:block;width:64px;height:64px;border:0;border-radius:50%;">
+                      </a>
+                    </td>
+                    <td valign="middle" style="padding-left:14px;">
+                      <p style="margin:0 0 4px;color:#c5261b;font-size:13px;font-weight:700;line-height:1.3;letter-spacing:1.5px;text-transform:uppercase;">Tieko Media Limited</p>
+                      <p style="margin:0;color:#625d55;font-size:14px;line-height:1.5;">Research, content and digital systems</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-pad" style="padding:26px 42px 34px;background-color:#242321;color:#ffffff;">
+                <p style="margin:0 0 12px;color:#f18b82;font-size:13px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;">Enquiry received</p>
+                <h1 class="email-title" style="margin:0;font-size:42px;line-height:1.08;letter-spacing:-1px;color:#ffffff;">Your enquiry is with us.</h1>
+                <p style="margin:18px 0 0;color:#e7e3dc;font-size:17px;line-height:1.65;">Hello ${escapeHtml(name)}, thank you for reaching out. We have received your message and a member of our team will review it personally.</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-pad" style="padding:34px 42px 12px;">
+                <p style="margin:0 0 10px;color:#6e675e;font-size:12px;font-weight:700;line-height:1.4;letter-spacing:1.3px;text-transform:uppercase;">Your enquiry area</p>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;border-collapse:collapse;">
+                  <tr>
+                    <td style="padding:18px 20px;background-color:#f4efe7;border-left:4px solid #c5261b;color:#111111;font-size:17px;font-weight:700;line-height:1.45;">${escapeHtml(enquiry)}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-pad" style="padding:22px 42px 8px;color:#393632;">
+                <h2 style="margin:0 0 12px;color:#111111;font-size:21px;line-height:1.3;">What happens next</h2>
+                <p style="margin:0;font-size:16px;line-height:1.75;">We will review the context of your enquiry, match it with the right capability within Tieko Media and reply with the clearest next step. If we need more information, we will ask only for what is relevant.</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-pad" style="padding:26px 42px 38px;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td style="border-radius:2px;background-color:#c5261b;">
+                      <a href="${websiteUrl}" class="email-button" style="display:inline-block;padding:15px 24px;color:#ffffff;font-size:14px;font-weight:700;line-height:1;text-decoration:none;text-transform:uppercase;letter-spacing:.5px;">Visit our website&nbsp;&nbsp;→</a>
+                    </td>
+                  </tr>
+                </table>
+                <p style="margin:20px 0 0;color:#676159;font-size:14px;line-height:1.6;">You can also <a href="${servicesUrl}" style="color:#a91f16;font-weight:700;text-decoration:underline;">explore our services</a> or email us at <a href="mailto:info@tiekomedia.com" style="color:#a91f16;font-weight:700;text-decoration:underline;">info@tiekomedia.com</a>.</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-pad" style="padding:24px 42px;background-color:#f4efe7;border-top:1px solid #d7d0c4;color:#625d55;">
+                <p style="margin:0 0 8px;color:#111111;font-size:14px;font-weight:700;line-height:1.5;">Tieko Media Limited</p>
+                <p style="margin:0 0 12px;font-size:13px;line-height:1.6;">Build a business people can find, trust and choose.</p>
+                <p style="margin:0;font-size:13px;line-height:1.6;"><a href="${websiteUrl}" style="color:#a91f16;text-decoration:none;">www.tiekomedia.com</a>&nbsp;&nbsp;•&nbsp;&nbsp;<a href="mailto:info@tiekomedia.com" style="color:#a91f16;text-decoration:none;">info@tiekomedia.com</a></p>
+                <p style="margin:16px 0 0;color:#817970;font-size:11px;line-height:1.55;">This email confirms receipt only. It does not create a client relationship or confirm a service scope. Any engagement will be agreed with you directly.</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
 }
 
 export async function POST(request: Request) {
@@ -151,7 +247,8 @@ export async function POST(request: Request) {
     const confirmation = await resend.emails.send({
       from: resendFromEmail,
       to: email,
-      subject: "We received your enquiry | Tieko Media",
+      replyTo: "info@tiekomedia.com",
+      subject: "Your enquiry is with us | Tieko Media",
       html: acknowledgement(name, enquiry),
     });
 
