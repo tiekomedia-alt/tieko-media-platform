@@ -104,7 +104,12 @@ function categoryRows(categoryScores: Record<DiqCategory, number>) {
     .join("");
 }
 
-function resultEmail(score: number, tier: ReturnType<typeof calculateDiq>["tier"], categoryScores: Record<DiqCategory, number>) {
+function listItems(items: string[]) {
+  return items.map((item) => `<li style="margin:0 0 10px">${escapeHtml(item)}</li>`).join("");
+}
+
+function resultEmail(result: ReturnType<typeof calculateDiq>) {
+  const { score, tier, categoryScores, priorityActions, criticalAlerts } = result;
   const colour = tier.colour === "green" ? "#16803c" : tier.colour === "orange" ? "#d97706" : "#d92d20";
   return `
     <div style="margin:0;background:#f4f0e7;padding:28px;font-family:Arial,sans-serif;color:#252321">
@@ -121,6 +126,8 @@ function resultEmail(score: number, tier: ReturnType<typeof calculateDiq>["tier"
           </div>
           <p style="margin:24px 0;line-height:1.7">${escapeHtml(tier.summary)}</p>
           <table style="width:100%;border-collapse:collapse;font-size:14px">${categoryRows(categoryScores)}</table>
+          ${criticalAlerts.length ? `<div style="margin-top:24px;padding:18px;background:#fff1f0;border-left:6px solid #d92d20"><p style="margin:0 0 12px;font-weight:700">Critical risks to address</p><ul style="margin:0;padding-left:20px;line-height:1.6">${listItems(criticalAlerts)}</ul></div>` : ""}
+          ${priorityActions.length ? `<p style="margin:24px 0 10px;font-weight:700">Your next three moves</p><ol style="margin:0;padding-left:22px;line-height:1.6">${listItems(priorityActions)}</ol>` : ""}
           <p style="margin:24px 0 8px;font-weight:700">Recommended next move</p>
           <p style="margin:0;line-height:1.7">${escapeHtml(tier.recommendation)}</p>
           <a href="https://www.tiekomedia.com/start-your-review" style="display:inline-block;margin-top:26px;padding:14px 20px;background:#d92d20;color:#fff;text-decoration:none;font-weight:700">Get a free infrastructure review</a>
@@ -217,7 +224,7 @@ export async function POST(request: Request) {
       to: leadsToEmail,
       replyTo: email,
       subject: `New DIQ lead: ${result.score}/100 · ${result.tier.label}`,
-      html: `<p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>DIQ:</strong> ${result.score}/100 · ${escapeHtml(result.tier.label)}</p><table style="border-collapse:collapse">${categoryRows(result.categoryScores)}</table>`,
+      html: `<p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>DIQ:</strong> ${result.score}/100 · ${escapeHtml(result.tier.label)}</p><table style="border-collapse:collapse">${categoryRows(result.categoryScores)}</table>${result.priorityActions.length ? `<p><strong>Priority actions:</strong></p><ol>${listItems(result.priorityActions)}</ol>` : ""}`,
     });
     if (leadDelivery.error) {
       console.error("DIQ lead notification failed", leadDelivery.error);
@@ -228,7 +235,7 @@ export async function POST(request: Request) {
       from: resendFromEmail,
       to: email,
       subject: `Your Tieko Media DIQ score: ${result.score}/100`,
-      html: resultEmail(result.score, result.tier, result.categoryScores),
+      html: resultEmail(result),
     });
     if (userDelivery.error) {
       console.error("DIQ result delivery failed", userDelivery.error);
@@ -239,6 +246,8 @@ export async function POST(request: Request) {
       score: result.score,
       tier: result.tier,
       categoryScores: result.categoryScores,
+      priorityActions: result.priorityActions,
+      criticalAlerts: result.criticalAlerts,
     });
 
     response.cookies.set("diq_session", "", {

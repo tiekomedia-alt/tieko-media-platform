@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Check Your DIQ | Tieko Media",
-    description: "Discover whether your business infrastructure is exposed, fragile or digitally intelligent.",
+    description: "Discover whether your business foundation is missing, exposed, fragile, capable or digitally intelligent.",
     images: ["/images/insights/digital-intelligence-quotient.webp"],
   },
 };
@@ -89,9 +89,11 @@ export default function DigitalIntelligenceQuotientPage() {
               <h2 id="diq-scale-heading">One score. A clear signal.</h2>
             </div>
             <div className="diq-scale-grid">
-              <article className="diq-scale-red"><strong>0–49</strong><h3>Digitally exposed</h3><p>Gaps in your identity, access, records or customer systems put the business at risk. Fix these first.</p></article>
-              <article className="diq-scale-orange"><strong>50–69</strong><h3>Visible but fragile</h3><p>You&apos;re active and easy to find, but key systems still rely on improvisation. One lost password or failed payment could stall you.</p></article>
-              <article className="diq-scale-green"><strong>70–100</strong><h3>Digitally intelligent</h3><p>Your identity, visibility, payments and data work as one system, ready to support steady growth at home and abroad.</p></article>
+              <article className="diq-scale-red"><strong>0–19</strong><h3>Foundation not yet built</h3><p>Essential identity, access, payment, data and customer systems are mostly absent. This is a starting point, not a final verdict.</p></article>
+              <article className="diq-scale-red"><strong>20–49</strong><h3>Digitally exposed</h3><p>Some systems exist, but important gaps create operational, security and visibility risks.</p></article>
+              <article className="diq-scale-orange"><strong>50–69</strong><h3>Visible but fragile</h3><p>You are active and discoverable, but key systems still rely on improvisation.</p></article>
+              <article className="diq-scale-green"><strong>70–84</strong><h3>Digitally capable</h3><p>The main infrastructure works, although some gaps still limit resilience and growth.</p></article>
+              <article className="diq-scale-green"><strong>85–100</strong><h3>Digitally intelligent</h3><p>Identity, visibility, commerce, data and control work together as a dependable system.</p></article>
             </div>
           </div>
         </section>

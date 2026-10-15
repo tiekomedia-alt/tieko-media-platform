@@ -2837,7 +2837,7 @@ body {
 
 .diq-score-number span { font-weight: 800; }
 .diq-score-main p { margin: 0 0 0.3rem; color: var(--color-slate); font-size: 0.7rem; text-transform: uppercase; }
-.diq-score-main h2 { margin: 0; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 0.95; text-transform: uppercase; }
+.diq-score-main h2 { margin: 0; font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 0.95; overflow-wrap: anywhere; text-transform: uppercase; }
 .diq-score-summary { margin: 0 0 1.5rem; color: var(--color-slate); line-height: 1.6; }
 
 .diq-category-results {
@@ -2888,6 +2888,45 @@ body {
   color: #35322e;
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.diq-critical-alert,
+.diq-priority-actions {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-grid-grey);
+  background: white;
+}
+
+.diq-critical-alert {
+  border-left: 0.4rem solid #d92d20;
+  background: #fff1f0;
+}
+
+.diq-priority-actions {
+  border-left: 0.4rem solid var(--diq-result-colour);
+}
+
+.diq-critical-alert h3,
+.diq-priority-actions h3 {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  text-transform: uppercase;
+}
+
+.diq-critical-alert ul,
+.diq-priority-actions ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #35322e;
+  line-height: 1.55;
+}
+
+.diq-critical-alert li + li,
+.diq-priority-actions li + li {
+  margin-top: 0.65rem;
 }
 
 .diq-result-actions > div {
@@ -2947,22 +2986,23 @@ body {
 
 .diq-scale-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1px;
   border: 1px solid var(--color-grid-grey);
   background: var(--color-grid-grey);
 }
 
 .diq-scale-grid article {
-  padding: clamp(1.5rem, 4vw, 3rem);
+  min-width: 0;
+  padding: clamp(1.25rem, 2vw, 2.25rem);
   background: var(--color-soft-paper);
 }
 
-.diq-scale-grid strong { font-family: var(--font-display); font-size: 3.5rem; line-height: 1; }
+.diq-scale-grid strong { font-family: var(--font-display); font-size: clamp(2.25rem, 3vw, 3.5rem); line-height: 1; }
 .diq-scale-red strong { color: #d92d20; }
 .diq-scale-orange strong { color: #d97706; }
 .diq-scale-green strong { color: #16803c; }
-.diq-scale-grid h3 { margin: 1rem 0 0.7rem; font-family: var(--font-display); font-size: 1.8rem; text-transform: uppercase; }
+.diq-scale-grid h3 { margin: 1rem 0 0.7rem; font-family: var(--font-display); font-size: clamp(1.25rem, 1.65vw, 1.8rem); overflow-wrap: anywhere; text-transform: uppercase; }
 .diq-scale-grid p { margin: 0; color: var(--color-slate); line-height: 1.65; }
 
 .diq-related {
@@ -2993,6 +3033,7 @@ body {
   .diq-intro-card,
   .diq-email-card,
   .diq-result { gap: 2.5rem; }
+  .diq-scale-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 47.99rem) {

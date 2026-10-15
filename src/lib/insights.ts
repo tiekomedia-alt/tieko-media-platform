@@ -63,7 +63,7 @@ export const insights: Insight[] = [
           "Intelligence: analytics, customer records, responsible AI workflows and decisions made from evidence.",
           "Control: backups, privacy practices, multi-factor authentication and organisational ownership of access.",
         ],
-        callout: "0–49 is red: digitally exposed. 50–69 is orange: visible but fragile. 70–100 is green: digitally connected or globally intelligent.",
+        callout: "0–19 is red: foundation not yet built. 20–49 is red: digitally exposed. 50–69 is orange: visible but fragile. 70–84 is green: digitally capable. 85–100 is green: digitally intelligent.",
       },
       {
         heading: "The questions that reveal the truth",

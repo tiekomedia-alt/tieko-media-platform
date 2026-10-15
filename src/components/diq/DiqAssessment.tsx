@@ -13,6 +13,8 @@ type Result = {
   score: number;
   tier: DiqTier;
   categoryScores: Record<DiqCategory, number>;
+  priorityActions: string[];
+  criticalAlerts: string[];
 };
 
 type Stage = "intro" | "quiz" | "email" | "result";
@@ -77,8 +79,13 @@ async function createScorecardBlob(result: Result) {
   context.fillText("tiekomedia.com", 60, 564);
 
   context.fillStyle = accent;
-  context.font = "800 46px Arial";
-  context.fillText(result.tier.label.toUpperCase(), 482, 102);
+  const tierLabel = result.tier.label.toUpperCase();
+  let tierFontSize = 46;
+  do {
+    context.font = `800 ${tierFontSize}px Arial`;
+    tierFontSize -= 2;
+  } while (context.measureText(tierLabel).width > 636 && tierFontSize > 24);
+  context.fillText(tierLabel, 482, 102);
   context.fillStyle = "#252321";
   context.font = "26px Arial";
   context.fillText("Your capability profile", 482, 150);
@@ -181,7 +188,13 @@ export default function DiqAssessment() {
       const payload = (await response.json()) as Result & { error?: string };
       if (!response.ok) throw new Error(payload.error || "We could not send your scorecard.");
 
-      setResult({ score: payload.score, tier: payload.tier, categoryScores: payload.categoryScores });
+      setResult({
+        score: payload.score,
+        tier: payload.tier,
+        categoryScores: payload.categoryScores,
+        priorityActions: payload.priorityActions,
+        criticalAlerts: payload.criticalAlerts,
+      });
       setStage("result");
       setStatus("idle");
     } catch (submissionError) {
@@ -359,6 +372,18 @@ export default function DiqAssessment() {
           </div>
 
           <div className="diq-result-actions">
+            {result.criticalAlerts.length > 0 && (
+              <section className="diq-critical-alert" aria-labelledby="diq-critical-heading">
+                <h3 id="diq-critical-heading">Critical risks to address</h3>
+                <ul>{result.criticalAlerts.map((alert) => <li key={alert}>{alert}</li>)}</ul>
+              </section>
+            )}
+            {result.priorityActions.length > 0 && (
+              <section className="diq-priority-actions" aria-labelledby="diq-actions-heading">
+                <h3 id="diq-actions-heading">Your next three moves</h3>
+                <ol>{result.priorityActions.map((action) => <li key={action}>{action}</li>)}</ol>
+              </section>
+            )}
             <p>{result.tier.recommendation}</p>
             <div>
               <button type="button" onClick={shareScore}>Share score</button>
