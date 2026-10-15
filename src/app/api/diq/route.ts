@@ -2,13 +2,14 @@ import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypt
 import { NextResponse } from "next/server";
 import { calculateDiq, diqCategories, diqQuestions, type DiqCategory } from "@/lib/diq";
 import { escapeHtml } from "@/lib/email-content";
-import { getResendClient, leadsToEmail, resendFromEmail } from "@/lib/resend";
+import { getResendClient, isResendConfigured, leadsToEmail, resendFromEmail } from "@/lib/resend";
+import { isAllowedOrigin } from "@/lib/site";
 
 export const runtime = "nodejs";
 
 const MAX_BODY_LENGTH = 8_192;
 const SESSION_MAX_AGE_SECONDS = 7_200;
-const MINIMUM_COMPLETION_MS = 8_000;
+const MINIMUM_COMPLETION_MS = 1_000;
 const RATE_WINDOW_MS = 60 * 60 * 1_000;
 
 type RateEntry = { count: number; resetAt: number };
@@ -53,17 +54,6 @@ function parseCookie(request: Request, name: string) {
     .split(";")
     .map((cookie) => cookie.trim().split("="))
     .find(([cookieName]) => cookieName === name)?.[1];
-}
-
-function requestOriginIsAllowed(request: Request) {
-  const origin = request.headers.get("origin");
-  const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-  if (!origin || !host) return false;
-  try {
-    return new URL(origin).host === host;
-  } catch {
-    return false;
-  }
 }
 
 function clientAddress(request: Request) {
@@ -142,8 +132,9 @@ function resultEmail(score: number, tier: ReturnType<typeof calculateDiq>["tier"
 
 export async function GET() {
   try {
+    const token = createSessionToken();
     const response = safeJsonResponse({ ready: true });
-    response.cookies.set("diq_session", createSessionToken(), {
+    response.cookies.set("diq_session", token, {
       httpOnly: true,
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
@@ -159,13 +150,18 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    if (!requestOriginIsAllowed(request)) return safeJsonResponse({ error: "Request origin was not accepted." }, 403);
+    if (!isAllowedOrigin(request)) {
+      return safeJsonResponse({ error: "Request origin was not accepted." }, 403);
+    }
+
     if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
       return safeJsonResponse({ error: "Unsupported request format." }, 415);
     }
 
     const rawBody = await request.text();
-    if (!rawBody || rawBody.length > MAX_BODY_LENGTH) return safeJsonResponse({ error: "Invalid request size." }, 413);
+    if (!rawBody || rawBody.length > MAX_BODY_LENGTH) {
+      return safeJsonResponse({ error: "Invalid request size." }, 413);
+    }
 
     let body: unknown;
     try {
@@ -174,41 +170,48 @@ export async function POST(request: Request) {
       return safeJsonResponse({ error: "Invalid request." }, 400);
     }
 
-    if (!body || typeof body !== "object" || Array.isArray(body)) return safeJsonResponse({ error: "Invalid request." }, 400);
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return safeJsonResponse({ error: "Invalid request." }, 400);
+    }
+
     const input = body as Record<string, unknown>;
     const allowedKeys = new Set(["email", "answers", "website", "consent"]);
-    if (Object.keys(input).some((key) => !allowedKeys.has(key))) return safeJsonResponse({ error: "Unexpected request fields." }, 400);
+    if (Object.keys(input).some((key) => !allowedKeys.has(key))) {
+      return safeJsonResponse({ error: "Unexpected request fields." }, 400);
+    }
 
     const email = typeof input.email === "string" ? input.email.trim().toLowerCase() : "";
-    if (!validEmail(email)) return safeJsonResponse({ error: "Enter a valid email address." }, 400);
-    if (input.website !== "" || input.consent !== true) return safeJsonResponse({ error: "Submission could not be accepted." }, 400);
+    if (!validEmail(email)) {
+      return safeJsonResponse({ error: "Enter a valid email address." }, 400);
+    }
+
+    if (input.website !== "" || input.consent !== true) {
+      return safeJsonResponse({ error: "Submission could not be accepted." }, 400);
+    }
+
     if (!Array.isArray(input.answers) || input.answers.length !== diqQuestions.length || input.answers.some((answer) => typeof answer !== "boolean")) {
       return safeJsonResponse({ error: "Complete all 20 assessment questions." }, 400);
     }
 
     const token = parseCookie(request, "diq_session");
-    if (!verifySessionToken(token)) return safeJsonResponse({ error: "Your assessment session expired. Please retake the test." }, 403);
+    if (!verifySessionToken(token)) {
+      return safeJsonResponse({ error: "Your assessment session expired. Please retake the test." }, 403);
+    }
 
     const ipKey = `ip:${hash(clientAddress(request))}`;
     const emailKey = `email:${hash(email)}`;
-    if (exceedsRateLimit(ipKey, 8) || exceedsRateLimit(emailKey, 3)) {
+    if (exceedsRateLimit(ipKey, 10) || exceedsRateLimit(emailKey, 5)) {
       return safeJsonResponse({ error: "Too many scorecard requests. Please try again later." }, 429);
     }
 
     const result = calculateDiq(input.answers as boolean[]);
-    const resend = getResendClient();
-    const userDelivery = await resend.emails.send({
-      from: resendFromEmail,
-      to: email,
-      subject: `Your Tieko Media DIQ score: ${result.score}/100`,
-      html: resultEmail(result.score, result.tier, result.categoryScores),
-    });
 
-    if (userDelivery.error) {
-      console.error("DIQ result delivery failed", userDelivery.error);
-      return safeJsonResponse({ error: "We could not deliver your scorecard. Please check the email and try again." }, 502);
+    if (!isResendConfigured()) {
+      console.error("RESEND_API_KEY is not configured in environment variables.");
+      return safeJsonResponse({ error: "The scorecard service is temporarily unavailable. Please try again shortly." }, 503);
     }
 
+    const resend = getResendClient();
     const leadDelivery = await resend.emails.send({
       from: resendFromEmail,
       to: leadsToEmail,
@@ -216,10 +219,36 @@ export async function POST(request: Request) {
       subject: `New DIQ lead: ${result.score}/100 · ${result.tier.label}`,
       html: `<p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>DIQ:</strong> ${result.score}/100 · ${escapeHtml(result.tier.label)}</p><table style="border-collapse:collapse">${categoryRows(result.categoryScores)}</table>`,
     });
-    if (leadDelivery.error) console.error("DIQ lead notification failed", leadDelivery.error);
+    if (leadDelivery.error) {
+      console.error("DIQ lead notification failed", leadDelivery.error);
+      return safeJsonResponse({ error: "We could not save your scorecard request. Please try again shortly." }, 502);
+    }
 
-    const response = safeJsonResponse({ score: result.score, tier: result.tier, categoryScores: result.categoryScores });
-    response.cookies.set("diq_session", "", { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/api/diq", maxAge: 0 });
+    const userDelivery = await resend.emails.send({
+      from: resendFromEmail,
+      to: email,
+      subject: `Your Tieko Media DIQ score: ${result.score}/100`,
+      html: resultEmail(result.score, result.tier, result.categoryScores),
+    });
+    if (userDelivery.error) {
+      console.error("DIQ result delivery failed", userDelivery.error);
+      return safeJsonResponse({ error: "We could not deliver your scorecard. Please check the email and try again." }, 502);
+    }
+
+    const response = safeJsonResponse({
+      score: result.score,
+      tier: result.tier,
+      categoryScores: result.categoryScores,
+    });
+
+    response.cookies.set("diq_session", "", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/api/diq",
+      maxAge: 0,
+    });
+
     return response;
   } catch (error) {
     console.error("DIQ submission failed", error);

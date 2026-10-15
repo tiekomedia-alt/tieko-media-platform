@@ -17,7 +17,7 @@ const enquiryOptions = [
   "Something else",
 ];
 
-type SubmissionResponse = { error?: string };
+type SubmissionResponse = { error?: string; confirmationSent?: boolean };
 
 function validEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -26,6 +26,7 @@ function validEmail(value: string) {
 export default function ContactEnquiryForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [confirmationSent, setConfirmationSent] = useState(true);
   const [error, setError] = useState("");
 
   async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
@@ -77,6 +78,7 @@ export default function ContactEnquiryForm() {
         enquiry: String(formData.get("enquiry") ?? ""),
       });
       form.reset();
+      setConfirmationSent(result.confirmationSent !== false);
       setSubmitted(true);
     } catch (submissionError) {
       setError(
@@ -94,8 +96,9 @@ export default function ContactEnquiryForm() {
       <section className="contact-success" role="status" aria-live="polite">
         <p className="contact-form-kicker">Enquiry received</p>
         <h2>Thank you. We have your message.</h2>
-        <p>
-          We have sent a confirmation to your email address. A member of the Tieko Media team will review your enquiry and respond with the most useful next step.
+        <p>{confirmationSent
+          ? "We have sent a confirmation to your email address. A member of the Tieko Media team will review your enquiry and respond with the most useful next step."
+          : "Your enquiry reached the Tieko Media team, but the email confirmation could not be delivered. We will still review your enquiry and respond directly."}
         </p>
         <button type="button" onClick={() => setSubmitted(false)}>Send another enquiry</button>
       </section>

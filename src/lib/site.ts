@@ -25,3 +25,16 @@ export const INDEXABLE_ROUTES = [
 export function absoluteUrl(path = "/") {
   return new URL(path, SITE_URL).toString();
 }
+
+export function isAllowedOrigin(request: Request): boolean {
+  const origin = request.headers.get("origin");
+  const forwardedHost = request.headers.get("x-forwarded-host")?.split(",")[0]?.trim();
+  const host = (forwardedHost ?? request.headers.get("host"))?.toLowerCase();
+  if (!origin || !host) return false;
+
+  try {
+    return new URL(origin).host.toLowerCase() === host;
+  } catch {
+    return false;
+  }
+}

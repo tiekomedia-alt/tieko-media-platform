@@ -122,8 +122,25 @@ export default function DiqAssessment() {
   const question = diqQuestions[current];
 
   async function beginAssessment() {
-    await fetch("/api/diq", { method: "GET", credentials: "same-origin", cache: "no-store" }).catch(() => undefined);
-    setStage("quiz");
+    setStatus("sending");
+    setError("");
+
+    try {
+      const response = await fetch("/api/diq", { method: "GET", credentials: "same-origin", cache: "no-store" });
+      const data = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        throw new Error(data.error || "The assessment is temporarily unavailable.");
+      }
+      setStage("quiz");
+      setStatus("idle");
+    } catch (sessionError) {
+      setStatus("error");
+      setError(
+        sessionError instanceof Error
+          ? sessionError.message
+          : "The assessment is temporarily unavailable. Please try again shortly.",
+      );
+    }
   }
 
   function answerQuestion(value: boolean) {
@@ -243,8 +260,11 @@ export default function DiqAssessment() {
             <p>Answer 20 yes-or-no questions across five capability areas. Each &ldquo;yes&rdquo; earns 5 points, for a score out of 100.</p>
           </div>
           <div className="diq-intro-actions">
-            <button type="button" onClick={beginAssessment}>Take the DIQ test <span aria-hidden="true">&rarr;</span></button>
+            <button type="button" onClick={beginAssessment} disabled={status === "sending"}>
+              {status === "sending" ? "Preparing your test..." : "Take the DIQ test"} <span aria-hidden="true">&rarr;</span>
+            </button>
             <span>Free. No account needed. We only ask for your email when your score is ready.</span>
+            {error && <p className="diq-form-error" role="alert">{error}</p>}
           </div>
         </div>
       )}
