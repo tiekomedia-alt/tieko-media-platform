@@ -18,6 +18,7 @@ export const INDEXABLE_ROUTES = [
   "/insights",
   "/digital-intelligence-quotient",
   "/book-a-call",
+  "/contact",
   "/mediaservices",
 ] as const;
 

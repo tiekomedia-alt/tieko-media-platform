@@ -48,6 +48,7 @@ export default function Header() {
   const storeActive = pathname === "/store" || pathname.startsWith("/store/");
   const insightsActive = pathname === "/insights" || pathname.startsWith("/insights/");
   const aboutActive = pathname === "/about";
+  const contactActive = pathname === "/contact";
   const diqActive = pathname === "/digital-intelligence-quotient";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -270,6 +271,14 @@ export default function Header() {
               About
             </Link>
 
+            <Link
+              href="/contact"
+              aria-current={contactActive ? "page" : undefined}
+              className={`py-2 hover:text-action-red focus-visible:outline-2 focus-visible:outline-action-red rounded-xs transition-colors ${contactActive ? "text-action-red" : ""}`}
+            >
+              Contact
+            </Link>
+
           </nav>
 
           {/* Primary CTA & Mobile Controls */}
@@ -456,6 +465,17 @@ export default function Header() {
                   className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${aboutActive ? "text-action-red" : "text-ink-black"}`}
                 >
                   About
+                </Link>
+              </div>
+
+              <div>
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-current={contactActive ? "page" : undefined}
+                  className={`block py-2 text-[1.25rem] font-display font-bold uppercase tracking-tight hover:text-action-red ${contactActive ? "text-action-red" : "text-ink-black"}`}
+                >
+                  Contact
                 </Link>
               </div>
 
